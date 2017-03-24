@@ -1,4 +1,4 @@
-package com.dnstth.vtmg.dal;
+package com.dnstth.vtmg.dal.dao;
 
 /**
  * Created by Denes_Toth
