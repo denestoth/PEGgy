@@ -10,13 +10,13 @@
     <parent>
         <groupId>com.dnstth.vtmg</groupId>
         <artifactId>main</artifactId>
-        <version>${software.version}</version>
+        <version>0.0.1-SNAPSHOT</version>
         <relativePath>../main/pom.xml</relativePath>
     </parent>
 
     <groupId>com.dnstth.vtmg</groupId>
     <artifactId>domain</artifactId>
-    <version>${software.version}</version>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <dependencies>
