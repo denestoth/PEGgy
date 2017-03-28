@@ -1,3 +1,5 @@
+package com.dnstth.vtmg.domain;
+
 /**
  * Created by Denes_Toth
  */

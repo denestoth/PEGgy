@@ -31,7 +31,7 @@ public class Person {
     private Kind kind;
 
     @ManyToOne
-    private Sex sex;
+    private Gender gender;
 
     @ManyToMany
     private List<Event> events;
@@ -52,12 +52,12 @@ public class Person {
         this.name = name;
     }
 
-    public Sex getSex() {
-        return sex;
+    public Gender getGender() {
+        return gender;
     }
 
-    public void setSex(Sex sex) {
-        this.sex = sex;
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 
     public Date getBirthDate() {

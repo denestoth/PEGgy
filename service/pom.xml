@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <name>VtMG Domain</name>
-    <description>VtMG project domain module</description>
+    <name>VtMG Service</name>
+    <description>VtMG project service module</description>
 
     <parent>
         <groupId>com.dnstth.vtmg</groupId>
@@ -15,15 +15,21 @@
     </parent>
 
     <groupId>com.dnstth.vtmg</groupId>
-    <artifactId>domain</artifactId>
+    <artifactId>service</artifactId>
     <version>${software.version}</version>
     <packaging>pom</packaging>
 
     <dependencies>
+        <!-- dependencies to my own projects -->
         <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>persistence-api</artifactId>
-            <version>1.0.2</version>
+            <groupId>com.dnstth.vtmg</groupId>
+            <artifactId>dal</artifactId>
+            <version>${software.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.dnstth.vtmg</groupId>
+            <artifactId>domain</artifactId>
+            <version>${software.version}</version>
         </dependency>
     </dependencies>
 

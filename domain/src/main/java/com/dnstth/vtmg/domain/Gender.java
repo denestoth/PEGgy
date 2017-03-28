@@ -5,7 +5,7 @@ import javax.persistence.*;
 /**
  * Created by Denes_Toth
  */
-public class Sex {
+public class Gender {
 
     @Id
     @Column

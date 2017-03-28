@@ -1,8 +1,8 @@
 package com.dnstth.vtmg.dal.dao;
 
 import com.dnstth.vtmg.dal.repository.PlaceRepository;
-import com.dnstth.vtmg.domain.Place;
 
+import com.dnstth.vtmg.domain.Place;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
