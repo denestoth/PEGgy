@@ -1,0 +1,35 @@
+INSERT INTO gender(id, description) values (1, 'female');
+INSERT INTO gender(id, description) values (2, 'male');
+
+INSERT INTO kind(id, details) VALUES ('1', 'Ventrue');
+INSERT INTO kind(id, details) VALUES ('2', 'Brujah');
+INSERT INTO kind(id, details) VALUES ('3', 'Malkavian');
+INSERT INTO kind(id, details) VALUES ('4', 'Tremere');
+INSERT INTO kind(id, details) VALUES ('5', 'Toreador');
+INSERT INTO kind(id, details) VALUES ('6', 'Nosferatu');
+INSERT INTO kind(id, details) VALUES ('7', 'Lasombra');
+INSERT INTO kind(id, details) VALUES ('8', 'Tzimisce');
+INSERT INTO kind(id, details) VALUES ('9', 'Assamite');
+INSERT INTO kind(id, details) VALUES ('10', 'Giovanni');
+INSERT INTO kind(id, details) VALUES ('11', 'Gangrel');
+INSERT INTO kind(id, details) VALUES ('12', 'Setite');
+INSERT INTO kind(id, details) VALUES ('13', 'Ventrue antitribu');
+INSERT INTO kind(id, details) VALUES ('14', 'Brujah antitribu');
+INSERT INTO kind(id, details) VALUES ('15', 'Malkavian antitribu');
+INSERT INTO kind(id, details) VALUES ('16', 'Tremere antitribu');
+INSERT INTO kind(id, details) VALUES ('17', 'Toreador antitribu');
+INSERT INTO kind(id, details) VALUES ('18', 'Nosferatu antitribu');
+INSERT INTO kind(id, details) VALUES ('19', 'Lasombra antitribu');
+INSERT INTO kind(id, details) VALUES ('20', 'Tzimisce antitribu');
+INSERT INTO kind(id, details) VALUES ('21', 'Assamite antitribu');
+INSERT INTO kind(id, details) VALUES ('22', 'Giovanni antitribu');
+INSERT INTO kind(id, details) VALUES ('23', 'Gangrel antitribu');
+INSERT INTO kind(id, details) VALUES ('24', 'Setite antitribu');
+INSERT INTO kind(id, details) VALUES ('25', 'Caitiff');
+INSERT INTO kind(id, details) VALUES ('26', 'Panders');
+INSERT INTO kind(id, details) VALUES ('27', 'Daughters of Cacophony');
+INSERT INTO kind(id, details) VALUES ('28', 'Samedi');
+INSERT INTO kind(id, details) VALUES ('29', 'Salubri antitribu');
+
+INSERT INTO place(id, name, details) VALUES ('1', 'Place1', 'Place_1_Details');
+INSERT INTO place(id, name, details) VALUES ('2', 'Place2', 'Place_2_Details');
