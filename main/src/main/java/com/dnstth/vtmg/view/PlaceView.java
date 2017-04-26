@@ -4,6 +4,7 @@ package com.dnstth.vtmg.view;
  * Created by Denes_Toth
  */
 public class PlaceView {
+
     private int id;
 
     private String name;

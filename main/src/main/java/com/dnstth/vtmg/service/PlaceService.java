@@ -8,6 +8,7 @@ import java.util.List;
  * Created by Denes_Toth
  */
 public interface PlaceService {
+
     List<PlaceView> getAll();
 
     void add(PlaceView genderView);
