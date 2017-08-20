@@ -11,7 +11,7 @@ public interface PlaceService {
 
     List<PlaceView> getAll();
 
-    void add(PlaceView genderView);
+    void add(PlaceView placeView);
 
     void delete(int id);
 }

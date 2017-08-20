@@ -11,7 +11,7 @@ public interface KindService {
 
     List<KindView> getAll();
 
-    void add(KindView genderView);
+    void add(KindView kindView);
 
     void delete(int id);
 }
