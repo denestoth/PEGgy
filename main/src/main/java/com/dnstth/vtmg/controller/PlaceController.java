@@ -28,7 +28,8 @@ public class PlaceController {
     }
 
     @RequestMapping(value="/api/place", method= RequestMethod.POST)
-    public String addNewPlace(@RequestParam("placeName") String placeName, @RequestParam("placeDetails") String placeDetails, Model model){
+    public String addNewPlace(@RequestParam("placeName") String placeName,
+                              @RequestParam("placeDetails") String placeDetails, Model model){
         PlaceView placeView = new PlaceView();
         placeView.setName(placeName);
         placeView.setDetails(placeDetails);
