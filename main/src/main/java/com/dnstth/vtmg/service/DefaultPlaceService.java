@@ -26,8 +26,8 @@ public class DefaultPlaceService implements PlaceService {
     }
 
     @Override
-    public void add(PlaceView genderView) {
-        placeDao.add(placeTransformer.viewToDto(genderView));
+    public void add(PlaceView placeView) {
+        placeDao.add(placeTransformer.viewToDto(placeView));
     }
 
     @Override

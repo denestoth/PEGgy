@@ -26,8 +26,8 @@ public class DefaultKindService implements  KindService {
     }
 
     @Override
-    public void add(KindView genderView) {
-        kindDao.add(kindTransformer.viewToDto(genderView));
+    public void add(KindView kindView) {
+        kindDao.add(kindTransformer.viewToDto(kindView));
     }
 
     @Override
