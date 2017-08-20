@@ -35,12 +35,7 @@ public class DefaultGenderDao implements GenderDao {
 
     @Override
     public Gender findOne(int id) {
-        Optional<Gender> optional = genderRepository.findOne(id);
-
-        if (optional.isPresent()) {
-            return optional.get();
-        }
-
-        return null;
+        Optional<Gender> optional = genderRepository.findById(id);
+        return optional.isPresent() ? optional.get() : null;
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by Denes_Toth
@@ -23,13 +24,7 @@ public class KindTransformer implements Transformer<Kind,KindView> {
 
     @Override
     public List<Kind> viewsToDtos(List<KindView> kindViews) {
-        List<Kind> kinds = new ArrayList<Kind>();
-
-        for(KindView kindView : kindViews) {
-            kinds.add(viewToDto(kindView));
-        }
-
-        return kinds;
+        return kindViews.stream().map(kv -> viewToDto(kv)).collect(Collectors.toList());
     }
 
     @Override
@@ -42,12 +37,6 @@ public class KindTransformer implements Transformer<Kind,KindView> {
 
     @Override
     public List<KindView> dtosToViews(List<Kind> kinds) {
-        List<KindView> kindViews = new ArrayList<KindView>();
-
-        for (Kind kind : kinds) {
-            kindViews.add(dtoToView(kind));
-        }
-
-        return kindViews;
+        return kinds.stream().map(k -> dtoToView(k)).collect(Collectors.toList());
     }
 }

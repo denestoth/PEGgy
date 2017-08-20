@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by Denes_Toth
@@ -23,13 +24,7 @@ public class GenderTransformer implements Transformer<Gender, GenderView> {
 
     @Override
     public List<Gender> viewsToDtos(List<GenderView> genderViews) {
-        List<Gender> genders = new ArrayList<Gender>();
-
-        for(GenderView genderView : genderViews){
-            genders.add(viewToDto(genderView));
-        }
-
-        return genders;
+        return genderViews.stream().map(gv -> viewToDto(gv)).collect(Collectors.toList());
     }
 
     @Override
@@ -42,12 +37,6 @@ public class GenderTransformer implements Transformer<Gender, GenderView> {
 
     @Override
     public List<GenderView> dtosToViews(List<Gender> genders) {
-        List<GenderView> genderViews = new ArrayList<GenderView>();
-
-        for (Gender gender : genders){
-            genderViews.add(dtoToView(gender));
-        }
-
-        return genderViews;
+        return genders.stream().map(g -> dtoToView(g)).collect(Collectors.toList());
     }
 }

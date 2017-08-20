@@ -35,13 +35,8 @@ public class DefaultEventDao implements EventDao {
 
     @Override
     public Event findOne(int id) {
-        Optional<Event> optional = eventRepository.findOne(id);
-
-        if (optional.isPresent()) {
-            return optional.get();
-        }
-
-        return null;
+        Optional<Event> optional = eventRepository.findById(id);
+        return optional.isPresent() ? optional.get() : null;
     }
 
 }

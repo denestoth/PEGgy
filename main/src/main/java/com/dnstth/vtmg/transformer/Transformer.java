@@ -7,12 +7,12 @@ import java.util.List;
  */
 public interface Transformer<DTO,VIEW> {
 
-    public DTO viewToDto(VIEW view);
+    DTO viewToDto(VIEW view);
 
-    public List<DTO> viewsToDtos(List<VIEW> views);
+    List<DTO> viewsToDtos(List<VIEW> views);
 
-    public VIEW dtoToView(DTO dto);
+    VIEW dtoToView(DTO dto);
 
-    public List<VIEW> dtosToViews(List<DTO> dtos);
+    List<VIEW> dtosToViews(List<DTO> dtos);
 
 }

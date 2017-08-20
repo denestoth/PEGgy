@@ -35,13 +35,8 @@ public class DefaultKindDao implements KindDao {
 
     @Override
     public Kind findOne(int id) {
-        Optional<Kind> optional = kindRepository.findOne(id);
-
-        if (optional.isPresent()) {
-            return optional.get();
-        }
-
-        return null;
+        Optional<Kind> optional = kindRepository.findById(id);
+        return optional.isPresent() ? optional.get() : null;
     }
 
 }

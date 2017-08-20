@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by Denes_Toth
@@ -24,13 +25,7 @@ public class PlaceTransformer implements Transformer<Place, PlaceView> {
 
     @Override
     public List<Place> viewsToDtos(List<PlaceView> placeViews) {
-        List<Place> places = new ArrayList<Place>();
-
-        for (PlaceView placeView: placeViews) {
-            places.add(viewToDto(placeView));
-        }
-
-        return places;
+        return placeViews.stream().map(pv -> viewToDto(pv)).collect(Collectors.toList());
     }
 
     @Override
@@ -44,12 +39,6 @@ public class PlaceTransformer implements Transformer<Place, PlaceView> {
 
     @Override
     public List<PlaceView> dtosToViews(List<Place> places) {
-        List<PlaceView> placeViews = new ArrayList<PlaceView>();
-
-        for (Place place: places) {
-            placeViews.add(dtoToView(place));
-        }
-
-        return placeViews;
+        return places.stream().map(p -> dtoToView(p)).collect(Collectors.toList());
     }
 }

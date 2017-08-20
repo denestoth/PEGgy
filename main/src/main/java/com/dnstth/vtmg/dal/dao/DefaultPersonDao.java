@@ -35,12 +35,7 @@ public class DefaultPersonDao implements PersonDao {
 
     @Override
     public Person findOne(int id) {
-        Optional<Person> optional = personRepository.findOne(id);
-
-        if (optional.isPresent()) {
-            return optional.get();
-        }
-
-        return null;
+        Optional<Person> optional = personRepository.findById(id);
+        return optional.isPresent() ? optional.get() : null;
     }
 }

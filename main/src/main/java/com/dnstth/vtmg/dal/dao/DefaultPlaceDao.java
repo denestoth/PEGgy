@@ -35,12 +35,7 @@ public class DefaultPlaceDao implements PlaceDao {
 
     @Override
     public Place findOne(int id) {
-        Optional<Place> optional = placeRepository.findOne(id);
-
-        if (optional.isPresent()) {
-            return optional.get();
-        }
-
-        return null;
+        Optional<Place> optional = placeRepository.findById(id);
+        return optional.isPresent() ? optional.get() : null;
     }
 }
