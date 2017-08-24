@@ -14,12 +14,12 @@
             <a class="navbar-brand" href="/">VtMG</a>
         </div>
         <ul class="nav navbar-nav">
-            <li><a href="/">Home</a></li>
-            <li><a href="/api/gender">Gender</a></li>
-            <li class="active"><a href="/api/kind">Kind</a></li>
-            <li><a href="/api/place">Place</a></li>
-            <li><a href="/api/person">Person</a></li>
-            <li><a href="/api/event">Event</a></li>
+            <li><a href="/" th:text="#{menu.home}"></a></li>
+            <li><a href="/api/gender" th:text="#{menu.gender}"></a></li>
+            <li class="active"><a href="/api/kind" th:text="#{menu.kind}"></a></li>
+            <li><a href="/api/place" th:text="#{menu.place}"></a></li>
+            <li><a href="/api/person" th:text="#{menu.person}"></a></li>
+            <li><a href="/api/event" th:text="#{menu.event}"></a></li>
         </ul>
     </div>
 </nav>
@@ -30,14 +30,14 @@
         <div class="col-md-6">
             <form class="form-horizontal" action="/api/kind" method="post" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="kindDetailsInput">Description</label>
+                    <label class="col-md-4 control-label" for="kindDetailsInput" th:text="#{inputform.details}"></label>
                     <div class="col-md-8">
                         <input class="form-control" id="kindDetailsInput" type="text" name="kindDetails" size="20"/>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-12" align="center">
-                        <input class="btn btn-success" type="submit" value="Save"/>
+                        <input class="btn btn-success" type="submit" th:value="#{button.save}"/>
                     </div>
                 </div>
             </form>
@@ -49,7 +49,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-6 col-md-4"></div>
-        <div class="col-xs-6 col-md-4" align="center"><h3>KIND</h3></div>
+        <div class="col-xs-6 col-md-4" align="center"><h3><label th:text="#{menu.kind}"></label></h3></div>
         <div class="col-xs-6 col-md-4"></div>
     </div>
 
@@ -60,12 +60,12 @@
             <div class="col-md-2" align="right">
                 <div class="col-md-8" align="right">
                     <form class="form-horizontal" action="/api/kind" method="put" enctype="multipart/form-data">
-                        <input class="btn btn-warning btn-xs" type="submit" value="Edit"/>
+                        <input class="btn btn-warning btn-xs" type="submit" th:value="#{button.edit}"/>
                     </form>
                 </div>
                 <div class="col-md-4" align="right">
                     <form class="form-horizontal" action="/api/kind/delete" method="post" enctype="multipart/form-data">
-                        <input class="btn btn-danger btn-xs" type="submit" value="Delete"/>
+                        <input class="btn btn-danger btn-xs" type="submit" th:value="#{button.delete}"/>
                         <input type="hidden" name="id" th:value="${kind.id}">
                     </form>
                 </div>
