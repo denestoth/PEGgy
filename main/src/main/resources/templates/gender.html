@@ -2,77 +2,79 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>VtMQ - Genders page</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/">VtMG</a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li><a href="/">Home</a></li>
-                <li class="active"><a href="/api/gender">Genders</a></li>
-                <li><a href="/api/kind">Kinds</a></li>
-                <li><a href="/api/place">Places</a></li>
-                <li><a href="/api/person">People</a></li>
-                <li><a href="/api/event">Events</a></li>
-            </ul>
-        </div>
-    </nav>
-
+<nav class="navbar navbar-default">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <form class="form-horizontal" action="/api/gender" method="post" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="genderDescriptionInput">Description</label>
-                        <div class="col-md-8">
-                            <input class="form-control" id="genderDescriptionInput" type="text" name="genderDescription" size="20"/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-12" align="center">
-                            <input class="btn btn-success" type="submit" value="Save"/>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="col-md-3"></div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">VtMG</a>
         </div>
+        <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li class="active"><a href="/api/gender">Genders</a></li>
+            <li><a href="/api/kind">Kinds</a></li>
+            <li><a href="/api/place">Places</a></li>
+            <li><a href="/api/person">People</a></li>
+            <li><a href="/api/event">Events</a></li>
+        </ul>
     </div>
+</nav>
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-6 col-md-4"></div>
-            <div class="col-xs-6 col-md-4" align="center"><h3>GENDER</h3></div>
-            <div class="col-xs-6 col-md-4"></div>
-        </div>
-
-        <th:block th:each="gndr : ${genders}">
-            <div class="row" th:classappend="${gndr.id % 2 == 0 ? 'bg-primary' : 'bg-info' }">
-                <div class="col-md-4"></div>
-                <div class="col-md-2" th:text="${gndr.description}"></div>
-                <div class="col-md-2" align="right">
-                    <div class="col-md-8" align="right">
-                        <form class="form-horizontal" action="/api/gender" method="put" enctype="multipart/form-data">
-                            <input class="btn btn-warning btn-xs" type="submit" value="Edit"/>
-                        </form>
-                    </div>
-                    <div class="col-md-4" align="right">
-                        <form class="form-horizontal" action="/api/gender/delete" method="post" enctype="multipart/form-data">
-                            <input class="btn btn-danger btn-xs" type="submit" value="Delete"/>
-                            <input type="hidden" name="id" th:value="${gndr.id}">
-                        </form>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form class="form-horizontal" action="/api/gender" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="genderDescriptionInput">Description</label>
+                    <div class="col-md-8">
+                        <input class="form-control" id="genderDescriptionInput" type="text" name="genderDescription"
+                               size="20"/>
                     </div>
                 </div>
-                <div class="col-md-4"></div>
-            </div>
-        </th:block>
+                <div class="form-group">
+                    <div class="col-md-12" align="center">
+                        <input class="btn btn-success" type="submit" value="Save"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
     </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-6 col-md-4"></div>
+        <div class="col-xs-6 col-md-4" align="center"><h3>GENDER</h3></div>
+        <div class="col-xs-6 col-md-4"></div>
+    </div>
+
+    <th:block th:each="gndr : ${genders}">
+        <div class="row" th:classappend="${gndr.id % 2 == 0 ? 'bg-primary' : 'bg-info' }">
+            <div class="col-md-4"></div>
+            <div class="col-md-2" th:text="${gndr.description}"></div>
+            <div class="col-md-2" align="right">
+                <div class="col-md-8" align="right">
+                    <form class="form-horizontal" action="/api/gender" method="put" enctype="multipart/form-data">
+                        <input class="btn btn-warning btn-xs" type="submit" value="Edit"/>
+                    </form>
+                </div>
+                <div class="col-md-4" align="right">
+                    <form class="form-horizontal" action="/api/gender/delete" method="post"
+                          enctype="multipart/form-data">
+                        <input class="btn btn-danger btn-xs" type="submit" value="Delete"/>
+                        <input type="hidden" name="id" th:value="${gndr.id}">
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </th:block>
+</div>
 </body>
 </html>

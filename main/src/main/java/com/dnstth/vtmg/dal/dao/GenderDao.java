@@ -8,7 +8,6 @@ import java.util.List;
  * Created by Denes_Toth
  */
 public interface GenderDao {
-
     List<Gender> findAll();
 
     void delete(Gender gender);

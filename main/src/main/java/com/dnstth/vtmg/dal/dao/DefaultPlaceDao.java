@@ -19,17 +19,17 @@ public class DefaultPlaceDao implements PlaceDao {
     private PlaceRepository placeRepository;
 
     @Override
-    public List<Place> findAll(){
+    public List<Place> findAll() {
         return placeRepository.findAll();
     }
 
     @Override
-    public void delete(Place place){
+    public void delete(Place place) {
         placeRepository.delete(place);
     }
 
     @Override
-    public void add(Place place){
+    public void add(Place place) {
         placeRepository.save(place);
     }
 

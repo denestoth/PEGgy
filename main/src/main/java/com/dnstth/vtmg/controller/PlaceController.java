@@ -20,16 +20,16 @@ public class PlaceController {
     @Autowired
     private PlaceService placeService;
 
-    @RequestMapping(value="/api/place", method= RequestMethod.GET)
-    public String getPlacePage(Model model){
+    @RequestMapping(value = "/api/place", method = RequestMethod.GET)
+    public String getPlacePage(Model model) {
         List<PlaceView> kindViews = placeService.getAll();
         model.addAttribute("places", kindViews);
         return "place";
     }
 
-    @RequestMapping(value="/api/place", method= RequestMethod.POST)
+    @RequestMapping(value = "/api/place", method = RequestMethod.POST)
     public String addNewPlace(@RequestParam("placeName") String placeName,
-                              @RequestParam("placeDetails") String placeDetails, Model model){
+                              @RequestParam("placeDetails") String placeDetails, Model model) {
         PlaceView placeView = new PlaceView();
         placeView.setName(placeName);
         placeView.setDetails(placeDetails);
@@ -37,8 +37,8 @@ public class PlaceController {
         return getPlacePage(model);
     }
 
-    @RequestMapping(value="/api/place/delete", method= RequestMethod.POST)
-    public String deletePlace(@RequestParam("id") int id, Model model){
+    @RequestMapping(value = "/api/place/delete", method = RequestMethod.POST)
+    public String deletePlace(@RequestParam("id") int id, Model model) {
         placeService.delete(id);
         return getPlacePage(model);
     }

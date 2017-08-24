@@ -20,23 +20,23 @@ public class GenderController {
     @Autowired
     private GenderService genderService;
 
-    @RequestMapping(value="/api/gender", method= RequestMethod.GET)
-    public String getGenderPage(Model model){
+    @RequestMapping(value = "/api/gender", method = RequestMethod.GET)
+    public String getGenderPage(Model model) {
         List<GenderView> genderViews = genderService.getAll();
         model.addAttribute("genders", genderViews);
         return "gender";
     }
 
-    @RequestMapping(value="/api/gender", method= RequestMethod.POST)
-    public String addNewGender(@RequestParam("genderDescription") String genderDescription, Model model){
+    @RequestMapping(value = "/api/gender", method = RequestMethod.POST)
+    public String addNewGender(@RequestParam("genderDescription") String genderDescription, Model model) {
         GenderView genderView = new GenderView();
         genderView.setDescription(genderDescription);
         genderService.add(genderView);
         return getGenderPage(model);
     }
 
-    @RequestMapping(value="/api/gender/delete", method= RequestMethod.POST)
-    public String deleteGender(@RequestParam("id") int id, Model model){
+    @RequestMapping(value = "/api/gender/delete", method = RequestMethod.POST)
+    public String deleteGender(@RequestParam("id") int id, Model model) {
         genderService.delete(id);
         return getGenderPage(model);
     }

@@ -26,7 +26,7 @@ public class DefaultGenderService implements GenderService {
     }
 
     @Override
-    public void add(GenderView genderView){
+    public void add(GenderView genderView) {
         genderDao.add(genderTransformer.viewToDto(genderView));
     }
 

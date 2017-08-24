@@ -40,21 +40,21 @@ public class PersonController {
     @Autowired
     private KindService kindService;
 
-    @RequestMapping(value="/api/person", method= RequestMethod.GET)
+    @RequestMapping(value = "/api/person", method = RequestMethod.GET)
     public String getPersonPage(Model model) {
         List<PersonView> personViews = personService.getAll();
         model.addAttribute("people", personViews);
         return "person";
     }
 
-    @RequestMapping(value="/api/person", method=RequestMethod.POST)
+    @RequestMapping(value = "/api/person", method = RequestMethod.POST)
     public String addNewPerson(@RequestParam("personName") String personName,
-                                @RequestParam("personBirthDate") String  personBirthDate,
-                                @RequestParam("personDeathDate") String personDeathDate,
-                                @RequestParam("personDetails") String personDetails,
-                                @RequestParam("personGenderId") int personGenderId,
+                               @RequestParam("personBirthDate") String personBirthDate,
+                               @RequestParam("personDeathDate") String personDeathDate,
+                               @RequestParam("personDetails") String personDetails,
+                               @RequestParam("personGenderId") int personGenderId,
                                @RequestParam("personKindId") int personKindId,
-                                Model model) {
+                               Model model) {
         PersonView personView = new PersonView();
         personView.setName(personName);
         personView.setBirthDate(parseDate(personBirthDate));
@@ -67,7 +67,7 @@ public class PersonController {
         return getPersonPage(model);
     }
 
-    @RequestMapping(value="/api/person/delete", method=RequestMethod.POST)
+    @RequestMapping(value = "/api/person/delete", method = RequestMethod.POST)
     public String DeletePerson(@RequestParam("id") int id, Model model) {
         personService.delete(id);
         return getPersonPage(model);
@@ -81,10 +81,10 @@ public class PersonController {
     }
 
     @ModelAttribute("allGenders")
-    public  List<GenderView> populateGenders() {
+    public List<GenderView> populateGenders() {
         List<GenderView> genderViews = genderService.getAll();
         genderViews.sort((gender1, gender2) -> gender1.getDescription().compareTo(gender2.getDescription()));
-        return  genderViews;
+        return genderViews;
     }
 
     private Date parseDate(String dateString) {

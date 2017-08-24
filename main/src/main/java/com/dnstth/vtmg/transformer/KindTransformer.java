@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
  * Created by Denes_Toth
  */
 @Component
-public class KindTransformer implements Transformer<Kind,KindView> {
+public class KindTransformer implements Transformer<Kind, KindView> {
 
     @Override
     public Kind viewToDto(KindView kindView) {

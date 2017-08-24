@@ -19,17 +19,17 @@ public class DefaultEventDao implements EventDao {
     private EventRepository eventRepository;
 
     @Override
-    public List<Event> findAll(){
+    public List<Event> findAll() {
         return eventRepository.findAll();
     }
 
     @Override
-    public void delete(Event event){
+    public void delete(Event event) {
         eventRepository.delete(event);
     }
 
     @Override
-    public void add(Event event){
+    public void add(Event event) {
         eventRepository.save(event);
     }
 

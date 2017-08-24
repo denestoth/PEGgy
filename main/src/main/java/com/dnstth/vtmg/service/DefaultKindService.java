@@ -12,7 +12,7 @@ import java.util.List;
  * Created by Denes_Toth
  */
 @Service
-public class DefaultKindService implements  KindService {
+public class DefaultKindService implements KindService {
 
     @Autowired
     private KindDao kindDao;

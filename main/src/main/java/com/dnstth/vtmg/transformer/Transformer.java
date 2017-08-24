@@ -5,8 +5,7 @@ import java.util.List;
 /**
  * Created by Denes_Toth
  */
-public interface Transformer<DTO,VIEW> {
-
+public interface Transformer<DTO, VIEW> {
     DTO viewToDto(VIEW view);
 
     List<DTO> viewsToDtos(List<VIEW> views);

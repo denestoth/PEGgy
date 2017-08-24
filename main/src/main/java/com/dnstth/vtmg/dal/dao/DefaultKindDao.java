@@ -19,17 +19,17 @@ public class DefaultKindDao implements KindDao {
     private KindRepository kindRepository;
 
     @Override
-    public List<Kind> findAll(){
+    public List<Kind> findAll() {
         return kindRepository.findAll();
     }
 
     @Override
-    public void delete(Kind kind){
+    public void delete(Kind kind) {
         kindRepository.delete(kind);
     }
 
     @Override
-    public void add(Kind kind){
+    public void add(Kind kind) {
         kindRepository.save(kind);
     }
 

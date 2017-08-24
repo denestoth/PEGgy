@@ -7,8 +7,7 @@ import java.util.List;
 /**
  * Created by Denes_Toth
  */
-public interface EventDao
-{
+public interface EventDao {
     List<Event> findAll();
 
     void delete(Event gender);

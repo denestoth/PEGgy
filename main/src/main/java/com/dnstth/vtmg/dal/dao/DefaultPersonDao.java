@@ -19,12 +19,12 @@ public class DefaultPersonDao implements PersonDao {
     private PersonRepository personRepository;
 
     @Override
-    public List<Person> findAll(){
+    public List<Person> findAll() {
         return personRepository.findAll();
     }
 
     @Override
-    public void delete(Person person){
+    public void delete(Person person) {
         personRepository.delete(person);
     }
 

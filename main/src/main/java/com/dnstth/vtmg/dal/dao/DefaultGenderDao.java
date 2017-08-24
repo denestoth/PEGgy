@@ -19,12 +19,12 @@ public class DefaultGenderDao implements GenderDao {
     private GenderRepository genderRepository;
 
     @Override
-    public List<Gender> findAll(){
+    public List<Gender> findAll() {
         return genderRepository.findAll();
     }
 
     @Override
-    public void delete(Gender gender){
+    public void delete(Gender gender) {
         genderRepository.delete(gender);
     }
 

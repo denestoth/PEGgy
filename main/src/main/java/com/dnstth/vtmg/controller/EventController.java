@@ -30,14 +30,14 @@ public class EventController {
     @Autowired
     private PersonService personService;
 
-    @RequestMapping(value="/api/event", method= RequestMethod.GET)
-    public String getEventPage(Model model){
+    @RequestMapping(value = "/api/event", method = RequestMethod.GET)
+    public String getEventPage(Model model) {
         List<EventView> eventViews = eventService.getAll();
         model.addAttribute("events", eventViews);
         return "event";
     }
 
-    @RequestMapping(value="/api/event", method=RequestMethod.POST)
+    @RequestMapping(value = "/api/event", method = RequestMethod.POST)
     public String addNewEvent(@RequestParam("eventDescription") String eventDescription,
                               @RequestParam("eventDate") Date eventDate,
                               @RequestParam("eventDetails") String eventDetails,
@@ -54,7 +54,7 @@ public class EventController {
         return getEventPage(model);
     }
 
-    @RequestMapping(value="/api/event/delete", method=RequestMethod.DELETE)
+    @RequestMapping(value = "/api/event/delete", method = RequestMethod.DELETE)
     public String deleteEvent(@RequestParam("id") int id, Model model) {
         eventService.delete(id);
         return getEventPage(model);
