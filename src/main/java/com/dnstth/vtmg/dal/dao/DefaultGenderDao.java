@@ -1,8 +1,7 @@
 package com.dnstth.vtmg.dal.dao;
 
-import com.dnstth.vtmg.dal.repository.GenderRepository;
 import com.dnstth.vtmg.dal.dto.Gender;
-
+import com.dnstth.vtmg.dal.repository.GenderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

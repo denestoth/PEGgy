@@ -4,7 +4,6 @@ import com.dnstth.vtmg.dal.dto.Gender;
 import com.dnstth.vtmg.view.GenderView;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

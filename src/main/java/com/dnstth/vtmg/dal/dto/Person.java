@@ -11,7 +11,7 @@ import java.util.List;
 public class Person {
 
     @Id
-    @Column(nullable=false, unique = true)
+    @Column(nullable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 

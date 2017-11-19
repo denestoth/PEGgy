@@ -25,7 +25,7 @@ public class PersonTransformer implements Transformer<Person, PersonView> {
     @Autowired
     private KindTransformer kindTransformer;
 
-        @Override
+    @Override
     public Person viewToDto(PersonView personView) {
         Person person = new Person();
         person.setId(personView.getId());
@@ -33,7 +33,7 @@ public class PersonTransformer implements Transformer<Person, PersonView> {
         try {
             person.setBirthDate(new SimpleDateFormat("yyyy-MM-dd").parse(personView.getBirthDate()));
             person.setDeathDate(new SimpleDateFormat("yyyy-MM-dd").parse(personView.getDeathDate()));
-        } catch(ParseException e) {
+        } catch (ParseException e) {
 
         }
         person.setDetails(personView.getDetails());

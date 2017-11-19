@@ -1,8 +1,7 @@
 package com.dnstth.vtmg.dal.dao;
 
-import com.dnstth.vtmg.dal.repository.PlaceRepository;
-
 import com.dnstth.vtmg.dal.dto.Place;
+import com.dnstth.vtmg.dal.repository.PlaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

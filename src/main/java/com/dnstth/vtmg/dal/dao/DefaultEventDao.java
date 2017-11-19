@@ -1,8 +1,7 @@
 package com.dnstth.vtmg.dal.dao;
 
-import com.dnstth.vtmg.dal.repository.EventRepository;
 import com.dnstth.vtmg.dal.dto.Event;
-
+import com.dnstth.vtmg.dal.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

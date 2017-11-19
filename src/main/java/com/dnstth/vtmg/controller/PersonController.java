@@ -1,6 +1,5 @@
 package com.dnstth.vtmg.controller;
 
-import com.dnstth.vtmg.dal.dto.Kind;
 import com.dnstth.vtmg.service.GenderService;
 import com.dnstth.vtmg.service.KindService;
 import com.dnstth.vtmg.service.PersonService;
@@ -8,7 +7,6 @@ import com.dnstth.vtmg.view.GenderView;
 import com.dnstth.vtmg.view.KindView;
 import com.dnstth.vtmg.view.PersonView;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,14 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created by Denes_Toth

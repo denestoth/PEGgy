@@ -10,7 +10,7 @@ import java.util.List;
 public class Kind {
 
     @Id
-    @Column(nullable=false, unique = true)
+    @Column(nullable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
