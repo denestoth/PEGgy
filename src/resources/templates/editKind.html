@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>VtMQ - Kinds page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">VtMG</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="/" th:text="#{menu.home}"></a></li>
+            <li><a href="/api/gender" th:text="#{menu.gender}"></a></li>
+            <li class="active"><a href="/api/kind" th:text="#{menu.kind}"></a></li>
+            <li><a href="/api/place" th:text="#{menu.place}"></a></li>
+            <li><a href="/api/person" th:text="#{menu.person}"></a></li>
+            <li><a href="/api/event" th:text="#{menu.event}"></a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form class="form-horizontal" action="/api/kind/update" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="kindDetailsInput" th:text="#{inputform.details}"></label>
+                    <div class="col-md-8">
+                        <input class="form-control" id="kindDetailsInput" type="text" name="kindDetails" th:value="${kind.details}" size="20"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12" align="center">
+                        <input class="btn btn-success" type="submit" th:value="#{button.save}"/>
+                        <input type="hidden" name="id" th:value="${kind.id}">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>VtMQ - People page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<!--Header begin-->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">VtMG</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="/" th:text="#{menu.home}"></a></li>
+            <li><a href="/api/gender" th:text="#{menu.gender}"></a></li>
+            <li><a href="/api/kind" th:text="#{menu.kind}"></a></li>
+            <li><a href="/api/place" th:text="#{menu.place}"></a></li>
+            <li class="active"><a href="/api/person" th:text="#{menu.person}"></a></li>
+            <li><a href="/api/event" th:text="#{menu.event}"></a></li>
+        </ul>
+    </div>
+</nav>
+<!--Header end-->
+
+<!--Details begin-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form class="form-horizontal" action="/api/person" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="personNameInput" th:text="#{inputform.name}"></label>
+                    <div class="col-md-8">
+                        <input class="form-control" id="personNameInput" type="text" name="personName" size="20"/>
+                    </div>
+                    <label class="col-md-4 control-label" for="personBirthDateInput" th:text="#{inputform.birthdate}"></label>
+                    <div class="col-md-8">
+                        <input class="form-control" id="personBirthDateInput" type="text" name="personBirthDate" size="20"/>
+                    </div>
+                    <label class="col-md-4 control-label" for="personDeathDateInput" th:text="#{inputform.deathdate}"></label>
+                    <div class="col-md-8">
+                        <input class="form-control" id="personDeathDateInput" type="text" name="personDeathDate" size="20"/>
+                    </div>
+                    <label class="col-md-4 control-label" for="personDetailsInput" th:text="#{inputform.details}">s</label>
+                    <div class="col-md-8">
+                        <input class="form-control" id="personDetailsInput" type="text" name="personDetails" size="20"/>
+                    </div>
+                    <label class="col-md-4 control-label" for="personKindInput" th:text="#{inputform.kind}">Kind</label>
+                    <div class="col-md-8">
+                        <select class="form-control" id="personKindInput" name="personKindId" size="1">
+                            <option th:each="kind : ${allKinds}"
+                                    th:value="${kind.getId()}"
+                                    th:text="${kind.getDetails()}">
+                            </option>
+                        </select>
+                    </div>
+                    <label class="col-md-4 control-label" for="personGenderInput" th:text="#{inputform.gender}"></label>
+                    <div class="col-md-8">
+                        <select class="form-control" id="personGenderInput" name="personGenderId" size="1">
+                            <option th:each="gender : ${allGenders}"
+                                    th:value="${gender.getId()}"
+                                    th:text="${gender.getDescription()}">
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12" align="center">
+                        <input class="btn btn-success" type="submit" th:value="#{button.save}"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+<!--Details end-->
+
+<!--List begin-->
+<div class="container-fluid">
+    <!--List header begin-->
+    <div class="row">
+        <div class="col-xs-6 col-md-4"></div>
+        <div class="col-xs-6 col-md-4" align="center"><h3><label th:text="#{menu.person}"></label></h3></div>
+        <div class="col-xs-6 col-md-4"></div>
+    </div>
+    <!--List header end-->
+
+    <!--List content begin-->
+    <th:block th:each="person : ${people}">
+        <div class="row" th:classappend="${person.id % 2 == 0 ? 'bg-primary' : 'bg-info' }">
+            <div class="col-md-1"></div>
+            <div class="col-md-2" th:text="${person.name}"></div>
+            <div class="col-md-1" th:text="${person.birthDate}"></div>
+            <div class="col-md-1" th:text="${person.deathDate}"></div>
+            <div class="col-md-2" th:text="${person.details}"></div>
+            <div class="col-md-1" th:text="${person.kind.details}"></div>
+            <div class="col-md-1" th:text="${person.gender.description}"></div>
+            <div class="col-md-2" align="right">
+                <div class="col-md-8" align="right">
+                    <form class="form-horizontal" action="/api/person/update" method="get" enctype="multipart/form-data">
+                        <input class="btn btn-warning btn-xs" type="submit" th:value="#{button.edit}"/>
+                        <input type="hidden" name="id" th:value="${person.id}">
+                    </form>
+                </div>
+                <div class="col-md-4" align="right">
+                    <form class="form-horizontal" action="/api/person/delete" method="post"
+                          enctype="multipart/form-data">
+                        <input class="btn btn-danger btn-xs" type="submit" th:value="#{button.delete}"/>
+                        <input type="hidden" name="id" th:value="${person.id}">
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </th:block>
+    <!--List content end-->
+</div>
+<!--List end-->
+</body>
+</html>
