@@ -4,9 +4,12 @@ import com.dnstth.vtmg.service.EventService;
 import com.dnstth.vtmg.service.PersonService;
 import com.dnstth.vtmg.service.PlaceService;
 import com.dnstth.vtmg.view.EventView;
+import com.dnstth.vtmg.view.PersonView;
+import com.dnstth.vtmg.view.PlaceView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -84,5 +87,19 @@ public class EventController {
         eventView.setParticipans(personService.getAll().stream().filter(personView -> participantViewIds.contains(personView.getId())).collect(Collectors.toList()));
         eventService.update(eventView);
         return getEventPage(model);
+    }
+
+    @ModelAttribute("allPlaces")
+    public List<PlaceView> populatePlaces() {
+        List<PlaceView> placeViews = placeService.getAll();
+        placeViews.sort((place1, place2) -> place1.getName().compareTo(place2.getName()));
+        return placeViews;
+    }
+
+    @ModelAttribute("allPeople")
+    public List<PersonView> populatePeople() {
+        List<PersonView> personViews = personService.getAll();
+        personViews.sort((person1, person2) -> person1.getName().compareTo(person2.getName()));
+        return personViews;
     }
 }

@@ -39,7 +39,11 @@ public class GenderController {
     @RequestMapping(value = "/api/gender/delete", method = RequestMethod.POST)
     public String deleteGender(@RequestParam("id") int id,
                                Model model) {
-        genderService.delete(id);
+        try {
+            genderService.delete(id);
+        } catch (Exception e) {
+            model.addAttribute("error", "Could not delete entry, other entries depending on it.");
+        }
         return getGenderPage(model);
     }
 

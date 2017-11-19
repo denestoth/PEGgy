@@ -33,5 +33,10 @@ INSERT INTO kind(id, details) VALUES (29, 'Salubri antitribu');
 
 INSERT INTO place(id, name, details) VALUES (1, 'Place1', 'Place_1_Details');
 INSERT INTO place(id, name, details) VALUES (2, 'Place2', 'Place_2_Details');
+INSERT INTO place(id, name, details) VALUES (3, 'Place3', 'Place_3_Details');
+INSERT INTO place(id, name, details) VALUES (4, 'Place4', 'Place_4_Details');
+INSERT INTO place(id, name, details) VALUES (5, 'Place5', 'Place_5_Details');
 
-INSERT INTO person(id, name, birth_date, death_date, details, kind_id, gender_id) VALUES (1, 'Test Person', TO_DATE('06/06/2006', 'mm/dd/yyyy'), TO_DATE('07/07/2007', 'mm/dd/yyyy'), 'some details', 1, 1);
+INSERT INTO person(id, name, birth_date, death_date, details, kind_id, gender_id) VALUES (1, 'Test Person', TO_DATE('06/06/2006', 'mm/dd/yyyy'), TO_DATE('07/07/2020', 'mm/dd/yyyy'), 'some details', 1, 1);
+INSERT INTO person(id, name, birth_date, death_date, details, kind_id, gender_id) VALUES (2, 'Other Someone', TO_DATE('02/14/1923', 'mm/dd/yyyy'), TO_DATE('07/07/2020', 'mm/dd/yyyy'), 'a few words', 2, 2);
+INSERT INTO person(id, name, birth_date, death_date, details, kind_id, gender_id) VALUES (3, 'Third guy', TO_DATE('01/01/1992', 'mm/dd/yyyy'), TO_DATE('07/07/2020', 'mm/dd/yyyy'), 'a few words', 12, 2);

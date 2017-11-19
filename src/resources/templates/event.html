@@ -24,5 +24,50 @@
     </div>
 </nav>
 
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form class="form-horizontal" action="/api/event" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="eventDescriptionInput"
+                           th:text="#{inputform.description}"></label>
+                    <div class="col-md-8">
+                        <input class="form-control" id="eventDescriptionInput" type="text" name="eventDescription"
+                               size="100"/>
+                    </div>
+                    <label class="col-md-4 control-label" for="eventDateInput" th:text="#{inputform.date}"></label>
+                    <div class="col-md-8">
+                        <input class="form-control" id="eventDateInput" type="text" name="eventDate" size="20"/>
+                    </div>
+                    <label class="col-md-4 control-label" for="eventDetailsInput"
+                           th:text="#{inputform.details}"></label>
+                    <div class="col-md-8">
+                        <input class="form-control" id="eventDetailsInput" type="text" name="eventDetails" size="100"/>
+                    </div>
+                    <label class="col-md-4 control-label" for="placeInput" th:text="#{inputform.place}">Place</label>
+                    <div class="col-md-8">
+                        <select class="form-control" id="placeInput" name="placeViewId" size="1">
+                            <option th:each="place : ${allPlaces}"
+                                    th:value="${place.getId()}"
+                                    th:text="${place.getName()}">
+                            </option>
+                        </select>
+                    </div>
+                    <label class="col-md-4 control-label" for="peopleInput" th:text="#{inputform.participants}" multiple="multiple">Place</label>
+                    <div class="col-md-8">
+                        <select class="form-control" id="peopleInput" name="participandViewIds" size="5">
+                            <option th:each="person : ${allPeople}"
+                                    th:value="${person.getId()}"
+                                    th:text="${person.getName()}">
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
 </body>
 </html>
