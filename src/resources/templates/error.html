@@ -9,6 +9,6 @@
 </head>
 <body>
 <p>some error happened</p>
-<p>${errorMsg}</p>
+<p th:utext="${#strings.replace(#strings.escapeJava(errorMsg),'\n','&lt;br /&gt;')}" ></p>
 </body>
 </html>
