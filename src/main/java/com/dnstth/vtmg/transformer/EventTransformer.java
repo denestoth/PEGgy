@@ -27,7 +27,7 @@ public class EventTransformer implements Transformer<Event, EventView> {
         event.setDate(eventView.getDate());
         event.setDescription(eventView.getDescription());
         event.setDetails(eventView.getDetails());
-        event.setParticipans(personTransformer.viewsToDtos(eventView.getParticipans()));
+        event.setParticipants(personTransformer.viewsToDtos(eventView.getParticipants()));
         event.setPlace(placeTransformer.viewToDto(eventView.getPlace()));
         return event;
     }
@@ -44,7 +44,7 @@ public class EventTransformer implements Transformer<Event, EventView> {
         eventView.setDate(event.getDate());
         eventView.setDescription(event.getDescription());
         eventView.setDetails(event.getDetails());
-        eventView.setParticipans(personTransformer.dtosToViews(event.getParticipans()));
+        eventView.setParticipants(personTransformer.dtosToViews(event.getParticipants()));
         eventView.setPlace(placeTransformer.dtoToView(event.getPlace()));
         return eventView;
     }

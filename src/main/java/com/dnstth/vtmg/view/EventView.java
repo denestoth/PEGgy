@@ -18,7 +18,7 @@ public class EventView {
 
     private PlaceView place;
 
-    private List<PersonView> participans;
+    private List<PersonView> participants;
 
     public int getId() {
         return id;
@@ -60,11 +60,11 @@ public class EventView {
         this.place = place;
     }
 
-    public List<PersonView> getParticipans() {
-        return participans;
+    public List<PersonView> getParticipants() {
+        return participants;
     }
 
-    public void setParticipans(List<PersonView> participans) {
-        this.participans = participans;
+    public void setParticipants(List<PersonView> participants) {
+        this.participants = participants;
     }
 }

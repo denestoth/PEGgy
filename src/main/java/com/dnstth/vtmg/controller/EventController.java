@@ -52,7 +52,7 @@ public class EventController {
         eventView.setDate(eventDate);
         eventView.setDetails(eventDetails);
         eventView.setPlace(placeService.getOne(placeViewID));
-        eventView.setParticipans(personService.getAll().stream().filter(personView -> participantViewIds.contains(personView.getId())).collect(Collectors.toList()));
+        eventView.setParticipants(personService.getAll().stream().filter(personView -> participantViewIds.contains(personView.getId())).collect(Collectors.toList()));
         eventService.add(eventView);
         return getEventPage(model);
     }
@@ -65,8 +65,7 @@ public class EventController {
     }
 
     @RequestMapping(value = "api/event/update", method = RequestMethod.GET)
-    public String updateEvent(@RequestParam("id") int id,
-                              Model model) {
+    public String updateEvent(@RequestParam("id") int id, Model model) {
         model.addAttribute("event", eventService.getOne(id));
         return "editEvent";
     }
@@ -84,7 +83,7 @@ public class EventController {
         eventView.setDate(eventDate);
         eventView.setDetails(eventDetails);
         eventView.setPlace(placeService.getOne(placeViewID));
-        eventView.setParticipans(personService.getAll().stream().filter(personView -> participantViewIds.contains(personView.getId())).collect(Collectors.toList()));
+        eventView.setParticipants(personService.getAll().stream().filter(personView -> participantViewIds.contains(personView.getId())).collect(Collectors.toList()));
         eventService.update(eventView);
         return getEventPage(model);
     }

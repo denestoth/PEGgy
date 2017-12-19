@@ -28,7 +28,7 @@ public class Event {
     private Place place;
 
     @ManyToMany
-    private List<Person> participans;
+    private List<Person> participants;
 
     public int getId() {
         return id;
@@ -70,11 +70,11 @@ public class Event {
         this.place = place;
     }
 
-    public List<Person> getParticipans() {
-        return participans;
+    public List<Person> getParticipants() {
+        return participants;
     }
 
-    public void setParticipans(List<Person> participans) {
-        this.participans = participans;
+    public void setParticipants(List<Person> participants) {
+        this.participants = participants;
     }
 }
