@@ -1,5 +1,7 @@
 package com.dnstth.vtmg.dal.dto;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -19,6 +21,7 @@ public class Event {
     private String description;
 
     @Column
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private Date date;
 
     @Column

@@ -7,6 +7,7 @@ import com.dnstth.vtmg.view.EventView;
 import com.dnstth.vtmg.view.PersonView;
 import com.dnstth.vtmg.view.PlaceView;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -42,7 +43,7 @@ public class EventController {
 
     @RequestMapping(value = "/api/event", method = RequestMethod.POST)
     public String addNewEvent(@RequestParam("eventDescription") String eventDescription,
-                              @RequestParam("eventDate") Date eventDate,
+                              @RequestParam("eventDate") @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") Date eventDate,
                               @RequestParam("eventDetails") String eventDetails,
                               @RequestParam("placeViewId") Integer placeViewID,
                               @RequestParam("participandViewIds") List<Integer> participantViewIds,

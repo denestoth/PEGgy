@@ -1,5 +1,7 @@
 package com.dnstth.vtmg.view;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 import java.util.List;
 
@@ -12,6 +14,7 @@ public class EventView {
 
     private String description;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private Date date;
 
     private String details;

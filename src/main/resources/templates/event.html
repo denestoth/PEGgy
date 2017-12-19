@@ -39,7 +39,7 @@
                     </div>
                     <label class="col-md-4 control-label" for="eventDateInput" th:text="#{inputform.date}"></label>
                     <div class="col-md-8">
-                        <input class="form-control" id="eventDateInput" type="datetime-local" name="eventDate" th:value="${#dates.createNow()}"/>
+                        <input class="form-control" id="eventDateInput" type="datetime-local" name="eventDate" th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd&#39T&#39hh:mm')}"/>
                     </div>
                     <label class="col-md-4 control-label" for="eventDetailsInput"
                            th:text="#{inputform.details}"></label>
