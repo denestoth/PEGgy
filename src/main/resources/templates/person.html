@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.min.css"/>
     <script
             src="https://code.jquery.com/jquery-3.2.1.min.js"
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -43,15 +43,18 @@
                     <div class="col-md-8">
                         <input class="form-control" id="personNameInput" type="text" name="personName" size="20"/>
                     </div>
-                    <label class="col-md-4 control-label" for="personBirthDateInput" th:text="#{inputform.birthdate}"></label>
+                    <label class="col-md-4 control-label" for="personBirthDateInput"
+                           th:text="#{inputform.birthdate}"></label>
                     <div class="col-md-8">
                         <input class="form-control" id="personBirthDateInput" type="text" name="personBirthDate"/>
                     </div>
-                    <label class="col-md-4 control-label" for="personDeathDateInput" th:text="#{inputform.deathdate}"></label>
+                    <label class="col-md-4 control-label" for="personDeathDateInput"
+                           th:text="#{inputform.deathdate}"></label>
                     <div class="col-md-8">
                         <input class="form-control" id="personDeathDateInput" type="text" name="personDeathDate"/>
                     </div>
-                    <label class="col-md-4 control-label" for="personDetailsInput" th:text="#{inputform.details}">s</label>
+                    <label class="col-md-4 control-label" for="personDetailsInput"
+                           th:text="#{inputform.details}">s</label>
                     <div class="col-md-8">
                         <input class="form-control" id="personDetailsInput" type="text" name="personDetails" size="20"/>
                     </div>
@@ -108,7 +111,8 @@
             <div class="col-md-1" th:text="${person.gender.description}"></div>
             <div class="col-md-2" align="right">
                 <div class="col-md-8" align="right">
-                    <form class="form-horizontal" action="/api/person/update" method="get" enctype="multipart/form-data">
+                    <form class="form-horizontal" action="/api/person/update" method="get"
+                          enctype="multipart/form-data">
                         <input class="btn btn-warning btn-xs" type="submit" th:value="#{button.edit}"/>
                         <input type="hidden" name="id" th:value="${person.id}">
                     </form>
@@ -139,6 +143,7 @@
     format:'d.m.Y',
     lang:'hu'
     });
+
 </script>
 </body>
 </html>

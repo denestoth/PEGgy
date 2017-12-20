@@ -15,7 +15,6 @@
 </head>
 <body>
 
-
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -42,17 +41,20 @@
                     <label class="col-xs-4 control-label" for="eventDescriptionInput"
                            th:text="#{inputform.description}"></label>
                     <div class="col-xs-8">
-                        <input class="form-control" id="eventDescriptionInput" type="text" name="eventDescription" th:value="${event.description}"
+                        <input class="form-control" id="eventDescriptionInput" type="text" name="eventDescription"
+                               th:value="${event.description}"
                                size="100"/>
                     </div>
                     <label class="col-xs-4 control-label" for="eventDateInput" th:text="#{inputform.date}"></label>
                     <div class="col-xs-8">
-                        <input class="form-control" id="eventDateInput" type="text" name="eventDate" th:value="${event.date}"/>
+                        <input class="form-control" id="eventDateInput" type="text" name="eventDate"
+                               th:value="${event.date}"/>
                     </div>
                     <label class="col-xs-4 control-label" for="eventDetailsInput"
                            th:text="#{inputform.details}"></label>
                     <div class="col-xs-8">
-                        <input class="form-control" id="eventDetailsInput" type="text" name="eventDetails" size="100" th:value="${event.details}"/>
+                        <input class="form-control" id="eventDetailsInput" type="text" name="eventDetails" size="100"
+                               th:value="${event.details}"/>
                     </div>
                     <label class="col-xs-4 control-label" for="placeInput" th:text="#{inputform.place}">Place</label>
                     <div class="col-xs-8">
@@ -67,7 +69,8 @@
                     <label class="col-xs-4 control-label" for="peopleInput"
                            th:text="#{inputform.participants}">Place</label>
                     <div class="col-xs-8">
-                        <select class="form-control" id="peopleInput" name="participandViewIds" size="5" multiple="multiple">
+                        <select class="form-control" id="peopleInput" name="participandViewIds" size="5"
+                                multiple="multiple">
                             <option th:each="person : ${allPeople}"
                                     th:value="${person.getId()}"
                                     th:text="${person.getName()}"
@@ -92,6 +95,7 @@
     format:'d.m.Y H:i',
     lang:'hu'
     });
+
 </script>
 </body>
 </html>
