@@ -64,7 +64,11 @@ public class PersonController {
     @RequestMapping(value = "/api/person/delete", method = RequestMethod.POST)
     public String deletePerson(@RequestParam("id") int id,
                                Model model) {
-        personService.delete(id);
+        try {
+            personService.delete(id);
+        } catch (Exception e) {
+            model.addAttribute("error", "Could not delete entry, other entries depending on it.");
+        }
         return getPersonPage(model);
     }
 
