@@ -62,7 +62,7 @@ public class PersonController {
     }
 
     @RequestMapping(value = "/api/person/delete", method = RequestMethod.POST)
-    public String DeletePerson(@RequestParam("id") int id,
+    public String deletePerson(@RequestParam("id") int id,
                                Model model) {
         personService.delete(id);
         return getPersonPage(model);

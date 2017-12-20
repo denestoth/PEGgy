@@ -58,7 +58,7 @@ public class EventController {
         return getEventPage(model);
     }
 
-    @RequestMapping(value = "/api/event/delete", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/api/event/delete", method = RequestMethod.POST)
     public String deleteEvent(@RequestParam("id") int id,
                               Model model) {
         eventService.delete(id);
