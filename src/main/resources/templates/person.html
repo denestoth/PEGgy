@@ -5,7 +5,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.min.css" />
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/javascript/jquery.datetimepicker.full.min.js"></script>
 </head>
 <body>
 <!--Header begin-->
@@ -39,11 +45,11 @@
                     </div>
                     <label class="col-md-4 control-label" for="personBirthDateInput" th:text="#{inputform.birthdate}"></label>
                     <div class="col-md-8">
-                        <input class="form-control" id="personBirthDateInput" type="text" name="personBirthDate" size="20"/>
+                        <input class="form-control" id="personBirthDateInput" type="text" name="personBirthDate"/>
                     </div>
                     <label class="col-md-4 control-label" for="personDeathDateInput" th:text="#{inputform.deathdate}"></label>
                     <div class="col-md-8">
-                        <input class="form-control" id="personDeathDateInput" type="text" name="personDeathDate" size="20"/>
+                        <input class="form-control" id="personDeathDateInput" type="text" name="personDeathDate"/>
                     </div>
                     <label class="col-md-4 control-label" for="personDetailsInput" th:text="#{inputform.details}">s</label>
                     <div class="col-md-8">
@@ -95,8 +101,8 @@
         <div class="row" th:classappend="${person.id % 2 == 0 ? 'bg-primary' : 'bg-info' }">
             <div class="col-md-1"></div>
             <div class="col-md-2" th:text="${person.name}"></div>
-            <div class="col-md-1" th:text="${person.birthDate}"></div>
-            <div class="col-md-1" th:text="${person.deathDate}"></div>
+            <div class="col-md-1" th:text="${#dates.format(person.birthDate, 'dd-MMM-yyyy')}"></div>
+            <div class="col-md-1" th:text="${#dates.format(person.deathDate, 'dd-MMM-yyyy')}"></div>
             <div class="col-md-2" th:text="${person.details}"></div>
             <div class="col-md-1" th:text="${person.kind.details}"></div>
             <div class="col-md-1" th:text="${person.gender.description}"></div>
@@ -121,5 +127,18 @@
     <!--List content end-->
 </div>
 <!--List end-->
+<script>
+    jQuery('#personBirthDateInput').datetimepicker({
+    timepicker:false,
+    format:'d.m.Y',
+    lang:'hu'
+    });
+
+    jQuery('#personDeathDateInput').datetimepicker({
+    timepicker:false,
+    format:'d.m.Y.',
+    lang:'hu'
+    });
+</script>
 </body>
 </html>

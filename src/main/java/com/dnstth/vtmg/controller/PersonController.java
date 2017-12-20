@@ -7,6 +7,7 @@ import com.dnstth.vtmg.view.GenderView;
 import com.dnstth.vtmg.view.KindView;
 import com.dnstth.vtmg.view.PersonView;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -41,8 +43,8 @@ public class PersonController {
 
     @RequestMapping(value = "/api/person", method = RequestMethod.POST)
     public String addNewPerson(@RequestParam("personName") String personName,
-                               @RequestParam("personBirthDate") String personBirthDate,
-                               @RequestParam("personDeathDate") String personDeathDate,
+                               @RequestParam("personBirthDate") @DateTimeFormat(pattern = "dd.MM.yyyy") Date personBirthDate,
+                               @RequestParam("personDeathDate") @DateTimeFormat(pattern = "dd.MM.yyyy") Date personDeathDate,
                                @RequestParam("personDetails") String personDetails,
                                @RequestParam("personGenderId") int personGenderId,
                                @RequestParam("personKindId") int personKindId,
@@ -76,8 +78,8 @@ public class PersonController {
     @RequestMapping(value = "/api/person/update", method = RequestMethod.POST)
     public String saveUpdatePerson(@RequestParam("id") int id,
                                    @RequestParam("personName") String personName,
-                                   @RequestParam("personBirthDate") String personBirthDate,
-                                   @RequestParam("personDeathDate") String personDeathDate,
+                                   @RequestParam("personBirthDate") @DateTimeFormat(pattern = "dd.MM.yyyy") Date personBirthDate,
+                                   @RequestParam("personDeathDate") @DateTimeFormat(pattern = "dd.MM.yyyy") Date personDeathDate,
                                    @RequestParam("personDetails") String personDetails,
                                    @RequestParam("personGenderId") int personGenderId,
                                    @RequestParam("personKindId") int personKindId,

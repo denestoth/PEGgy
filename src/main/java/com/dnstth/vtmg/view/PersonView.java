@@ -1,5 +1,6 @@
 package com.dnstth.vtmg.view;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -11,9 +12,9 @@ public class PersonView {
 
     private String name;
 
-    private String birthDate;
+    private Date birthDate;
 
-    private String deathDate;
+    private Date deathDate;
 
     private String details;
 
@@ -39,19 +40,19 @@ public class PersonView {
         this.name = name;
     }
 
-    public String getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(String birthDate) {
+    public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 
-    public String getDeathDate() {
+    public Date getDeathDate() {
         return deathDate;
     }
 
-    public void setDeathDate(String deathDate) {
+    public void setDeathDate(Date deathDate) {
         this.deathDate = deathDate;
     }
 

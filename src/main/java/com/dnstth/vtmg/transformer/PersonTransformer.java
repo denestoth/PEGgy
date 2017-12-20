@@ -5,8 +5,6 @@ import com.dnstth.vtmg.view.PersonView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,12 +28,8 @@ public class PersonTransformer implements Transformer<Person, PersonView> {
         Person person = new Person();
         person.setId(personView.getId());
         person.setName(personView.getName());
-        try {
-            person.setBirthDate(new SimpleDateFormat("yyyy-MM-dd").parse(personView.getBirthDate()));
-            person.setDeathDate(new SimpleDateFormat("yyyy-MM-dd").parse(personView.getDeathDate()));
-        } catch (ParseException e) {
-
-        }
+        person.setBirthDate(personView.getBirthDate());
+        person.setDeathDate(personView.getDeathDate());
         person.setDetails(personView.getDetails());
         person.setEvents(eventTransformer.viewsToDtos(personView.getEvents()));
         person.setGender(genderTransformer.viewToDto(personView.getGender()));
@@ -53,8 +47,8 @@ public class PersonTransformer implements Transformer<Person, PersonView> {
         PersonView personView = new PersonView();
         personView.setId(person.getId());
         personView.setName(person.getName());
-        personView.setBirthDate(new SimpleDateFormat("yyyy-MM-dd").format(person.getBirthDate()));
-        personView.setDeathDate(new SimpleDateFormat("yyyy-MM-dd").format(person.getDeathDate()));
+        personView.setBirthDate(person.getBirthDate());
+        personView.setDeathDate(person.getDeathDate());
         personView.setDetails(person.getDetails());
         personView.setEvents(eventTransformer.dtosToViews(person.getEvents()));
         personView.setGender(genderTransformer.dtoToView(person.getGender()));

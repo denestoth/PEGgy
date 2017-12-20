@@ -5,7 +5,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.min.css" />
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/javascript/jquery.datetimepicker.full.min.js"></script>
 </head>
 <body>
 <!--Header begin-->
@@ -39,11 +45,11 @@
                     </div>
                     <label class="col-md-4 control-label" for="personBirthDateInput" th:text="#{inputform.birthdate}"></label>
                     <div class="col-md-8">
-                        <input class="form-control" id="personBirthDateInput" type="text" name="personBirthDate" th:value="${person.birthDate}"  size="20"/>
+                        <input class="form-control" id="personBirthDateInput" type="text" name="personBirthDate" th:value="${person.birthDate}" />
                     </div>
                     <label class="col-md-4 control-label" for="personDeathDateInput" th:text="#{inputform.deathdate}"></label>
                     <div class="col-md-8">
-                        <input class="form-control" id="personDeathDateInput" type="text" name="personDeathDate" th:value="${person.deathDate}" size="20"/>
+                        <input class="form-control" id="personDeathDateInput" type="text" name="personDeathDate" th:value="${person.deathDate}" />
                     </div>
                     <label class="col-md-4 control-label" for="personDetailsInput" th:text="#{inputform.details}"></label>
                     <div class="col-md-8">
@@ -82,5 +88,18 @@
     </div>
 </div>
 <!--Details end-->
+<script>
+    jQuery('#personBirthDateInput').datetimepicker({
+    timepicker:false,
+    format:'d.m.Y',
+    lang:'hu'
+    });
+
+    jQuery('#personDeathDateInput').datetimepicker({
+    timepicker:false,
+    format:'d.m.Y.',
+    lang:'hu'
+    });
+</script>
 </body>
 </html>

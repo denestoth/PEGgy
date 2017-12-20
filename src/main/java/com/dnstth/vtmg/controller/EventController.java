@@ -43,7 +43,7 @@ public class EventController {
 
     @RequestMapping(value = "/api/event", method = RequestMethod.POST)
     public String addNewEvent(@RequestParam("eventDescription") String eventDescription,
-                              @RequestParam("eventDate") @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") Date eventDate,
+                              @RequestParam("eventDate") @DateTimeFormat(pattern = "dd.MM.yyyy HH:mm") Date eventDate,
                               @RequestParam("eventDetails") String eventDetails,
                               @RequestParam("placeViewId") Integer placeViewID,
                               @RequestParam("participandViewIds") List<Integer> participantViewIds,
