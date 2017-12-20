@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.min.css"/>
     <script
             src="https://code.jquery.com/jquery-3.2.1.min.js"
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -47,7 +47,7 @@
                     </div>
                     <label class="col-xs-4 control-label" for="eventDateInput" th:text="#{inputform.date}"></label>
                     <div class="col-xs-8">
-                        <input class="form-control" id="eventDateInput" type="text" name="eventDate" />
+                        <input class="form-control" id="eventDateInput" type="text" name="eventDate"/>
                     </div>
                     <label class="col-xs-4 control-label" for="eventDetailsInput"
                            th:text="#{inputform.details}"></label>
@@ -63,9 +63,10 @@
                             </option>
                         </select>
                     </div>
-                    <label class="col-xs-4 control-label" for="peopleInput" th:text="#{inputform.participants}" multiple="multiple">Place</label>
+                    <label class="col-xs-4 control-label" for="peopleInput"
+                           th:text="#{inputform.participants}">Place</label>
                     <div class="col-xs-8">
-                        <select class="form-control" id="peopleInput" name="participandViewIds" size="5">
+                        <select class="form-control" id="peopleInput" name="participandViewIds" size="5" multiple="multiple">
                             <option th:each="person : ${allPeople}"
                                     th:value="${person.getId()}"
                                     th:text="${person.getName()}">
@@ -112,7 +113,7 @@
 <!--List end-->
 <script>
     jQuery('#eventDateInput').datetimepicker({
-    format:'d.m.Y. H:i',
+    format:'d.m.Y H:i',
     lang:'hu'
     });
 </script>

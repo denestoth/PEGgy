@@ -74,7 +74,7 @@ public class EventController {
     @RequestMapping(value = "/api/event/update", method = RequestMethod.POST)
     public String saveUpdateEvent(@RequestParam("id") int id,
                                   @RequestParam("eventDescription") String eventDescription,
-                                  @RequestParam("eventDate") Date eventDate,
+                                  @RequestParam("eventDate") @DateTimeFormat(pattern = "dd.MM.yyyy HH:mm") Date eventDate,
                                   @RequestParam("eventDetails") String eventDetails,
                                   @RequestParam("placeViewId") Integer placeViewID,
                                   @RequestParam("participandViewIds") List<Integer> participantViewIds,
