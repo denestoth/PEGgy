@@ -75,12 +75,9 @@
             <artifactId>thymeleaf-spring5</artifactId>
         </dependency>
 
-        <!-- Temporary dependencies -->
-        <!-- change this later to a real DB -->
         <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.4.194</version>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
         </dependency>
     </dependencies>
 

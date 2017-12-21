@@ -38,15 +38,8 @@ INSERT INTO place(id, name, details) VALUES (3, 'Paris', 'Place_3_Details');
 INSERT INTO place(id, name, details) VALUES (4, 'Moscow', 'Place_4_Details');
 INSERT INTO place(id, name, details) VALUES (5, 'Budapest', 'Place_5_Details');
 
-INSERT INTO person(id, name, birth_date, death_date, details, kind_id, gender_id) VALUES (1, 'Test Person', TO_DATE('06/06/2006', 'mm/dd/yyyy'), TO_DATE('07/07/2020', 'mm/dd/yyyy'), 'some details', 1, 2);
-INSERT INTO person(id, name, birth_date, death_date, details, kind_id, gender_id) VALUES (2, 'Test Persona', TO_DATE('02/14/1923', 'mm/dd/yyyy'), TO_DATE('07/07/2020', 'mm/dd/yyyy'), 'a few words', 2, 1);
-INSERT INTO person(id, name, birth_date, death_date, details, kind_id, gender_id) VALUES (3, 'The third guy', TO_DATE('01/01/1992', 'mm/dd/yyyy'), TO_DATE('07/07/2020', 'mm/dd/yyyy'), 'a few words', 12, 3);
+INSERT INTO person(id, name, birth_date, death_date, details, kind_id, gender_id) VALUES (1, 'Test Person', '2006-06-06', '2020-07-07', 'some details', 1, 2);
 
-INSERT INTO event(id, date, description, details, place_id) VALUES (1, TO_DATE('11/18/2017', 'mm/dd/yyyy'), 'Some great event', 'This is really a great event', 1);
-INSERT INTO event(id, date, description, details, place_id) VALUES (2, TO_DATE('02/16/2017', 'mm/dd/yyyy'), 'Another remarkable event', 'This is a truely reamarkable event', 1);
+INSERT INTO event(id, date, description, details, place_id) VALUES (1, '2017-11-18', 'Some great event', 'This is really a great event', 1);
 
 INSERT INTO event_participants(event_id, participants_id) VALUES (1, 1);
-INSERT INTO event_participants(event_id, participants_id) VALUES (1, 2);
-INSERT INTO event_participants(event_id, participants_id) VALUES (2, 1);
-INSERT INTO event_participants(event_id, participants_id) VALUES (2, 2);
-INSERT INTO event_participants(event_id, participants_id) VALUES (2, 3);
