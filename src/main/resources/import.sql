@@ -39,7 +39,16 @@ INSERT INTO place(id, name, details) VALUES (4, 'Moscow', 'Place_4_Details');
 INSERT INTO place(id, name, details) VALUES (5, 'Budapest', 'Place_5_Details');
 
 INSERT INTO person(id, name, birth_date, death_date, details, kind_id, gender_id) VALUES (1, 'Test Person', '2006-06-06', '2020-07-07', 'some details', 1, 2);
+INSERT INTO person(id, name, birth_date, death_date, details, kind_id, gender_id) VALUES (2, 'Test Persona', '2006-06-06', '2020-07-07', 'some details', 1, 2);
+INSERT INTO person(id, name, birth_date, death_date, details, kind_id, gender_id) VALUES (3, 'Third Test Person', '2006-06-06', '2020-07-07', 'some details', 1, 2);
+INSERT INTO person(id, name, birth_date, death_date, details, kind_id, gender_id) VALUES (4, 'Unknown someone', '2006-06-06', '2020-07-07', 'some details', 1, 2);
 
 INSERT INTO event(id, date, description, details, place_id) VALUES (1, '2017-11-18', 'Some great event', 'This is really a great event', 1);
+INSERT INTO event(id, date, description, details, place_id) VALUES (2, '2017-11-18', 'Another great event', 'This is really a great event', 1);
 
-INSERT INTO event_participants(event_id, participants_id) VALUES (1, 1);
+INSERT INTO event_participants(eventid, personid) VALUES (1, 1);
+INSERT INTO event_participants(eventid, personid) VALUES (1, 2);
+INSERT INTO event_participants(eventid, personid) VALUES (1, 3);
+INSERT INTO event_participants(eventid, personid) VALUES (2, 2);
+INSERT INTO event_participants(eventid, personid) VALUES (2, 3);
+INSERT INTO event_participants(eventid, personid) VALUES (2, 4);

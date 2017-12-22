@@ -1,4 +1,4 @@
-package com.dnstth.vtmg.dal.dao;
+package com.dnstth.vtmg.dal.service;
 
 import com.dnstth.vtmg.dal.dto.Event;
 import com.dnstth.vtmg.dal.repository.EventRepository;
@@ -12,7 +12,7 @@ import java.util.Optional;
  * Created by Denes_Toth
  */
 @Repository
-public class DefaultEventDao implements EventDao {
+public class DefaultEventService implements EventService {
 
     @Autowired
     private EventRepository eventRepository;

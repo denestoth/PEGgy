@@ -69,7 +69,7 @@
                     <label class="col-xs-4 control-label" for="peopleInput"
                            th:text="#{inputform.participants}">Place</label>
                     <div class="col-xs-8">
-                        <select class="form-control" id="peopleInput" name="participandViewIds" size="5"
+                        <select class="form-control" id="peopleInput" name="participantViewIds" size="5"
                                 multiple="multiple">
                             <option th:each="person : ${allPeople}"
                                     th:value="${person.getId()}"

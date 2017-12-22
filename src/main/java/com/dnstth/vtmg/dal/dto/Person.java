@@ -1,5 +1,7 @@
 package com.dnstth.vtmg.dal.dto;
 
+import org.hibernate.annotations.Fetch;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -33,7 +35,12 @@ public class Person {
     @ManyToOne
     private Gender gender;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "EventParticipants",
+            joinColumns = { @JoinColumn(name="personid") },
+            inverseJoinColumns = { @JoinColumn(name="eventid")}
+    )
     private List<Event> events;
 
     public int getId() {

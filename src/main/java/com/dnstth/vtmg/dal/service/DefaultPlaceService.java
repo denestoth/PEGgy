@@ -1,4 +1,4 @@
-package com.dnstth.vtmg.dal.dao;
+package com.dnstth.vtmg.dal.service;
 
 import com.dnstth.vtmg.dal.dto.Place;
 import com.dnstth.vtmg.dal.repository.PlaceRepository;
@@ -12,7 +12,7 @@ import java.util.Optional;
  * Created by Denes_Toth
  */
 @Component
-public class DefaultPlaceDao implements PlaceDao {
+public class DefaultPlaceService implements PlaceService {
 
     @Autowired
     private PlaceRepository placeRepository;

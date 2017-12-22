@@ -1,4 +1,4 @@
-package com.dnstth.vtmg.dal.dao;
+package com.dnstth.vtmg.dal.service;
 
 import com.dnstth.vtmg.dal.dto.Person;
 
@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by Denes_Toth
  */
-public interface PersonDao {
+public interface PersonService {
     List<Person> findAll();
 
     void delete(Person gender);

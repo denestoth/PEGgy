@@ -1,4 +1,4 @@
-package com.dnstth.vtmg.dal.dao;
+package com.dnstth.vtmg.dal.service;
 
 import com.dnstth.vtmg.dal.dto.Gender;
 import com.dnstth.vtmg.dal.repository.GenderRepository;
@@ -12,7 +12,7 @@ import java.util.Optional;
  * Created by Denes_Toth
  */
 @Component
-public class DefaultGenderDao implements GenderDao {
+public class DefaultGenderService implements GenderService {
 
     @Autowired
     private GenderRepository genderRepository;

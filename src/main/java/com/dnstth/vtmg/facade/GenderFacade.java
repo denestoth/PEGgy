@@ -1,4 +1,4 @@
-package com.dnstth.vtmg.service;
+package com.dnstth.vtmg.facade;
 
 import com.dnstth.vtmg.view.GenderView;
 
@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by Denes_Toth
  */
-public interface GenderService {
+public interface GenderFacade {
 
     List<GenderView> getAll();
 

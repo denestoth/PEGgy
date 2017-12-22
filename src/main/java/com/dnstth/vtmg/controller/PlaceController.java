@@ -1,6 +1,6 @@
 package com.dnstth.vtmg.controller;
 
-import com.dnstth.vtmg.service.PlaceService;
+import com.dnstth.vtmg.facade.PlaceFacade;
 import com.dnstth.vtmg.view.PlaceView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,11 +18,11 @@ import java.util.List;
 public class PlaceController {
 
     @Autowired
-    private PlaceService placeService;
+    private PlaceFacade placeFacade;
 
     @RequestMapping(value = "/api/place", method = RequestMethod.GET)
     public String getPlacePage(Model model) {
-        List<PlaceView> kindViews = placeService.getAll();
+        List<PlaceView> kindViews = placeFacade.getAll();
         model.addAttribute("places", kindViews);
         return "place";
     }
@@ -34,21 +34,21 @@ public class PlaceController {
         PlaceView placeView = new PlaceView();
         placeView.setName(placeName);
         placeView.setDetails(placeDetails);
-        placeService.add(placeView);
+        placeFacade.add(placeView);
         return getPlacePage(model);
     }
 
     @RequestMapping(value = "/api/place/delete", method = RequestMethod.POST)
     public String deletePlace(@RequestParam("id") int id,
                               Model model) {
-        placeService.delete(id);
+        placeFacade.delete(id);
         return getPlacePage(model);
     }
 
     @RequestMapping(value = "api/place/update", method = RequestMethod.GET)
     public String updatePlace(@RequestParam("id") int id,
                               Model model) {
-        model.addAttribute("place", placeService.getOne(id));
+        model.addAttribute("place", placeFacade.getOne(id));
         return "editPlace";
     }
 
@@ -57,10 +57,10 @@ public class PlaceController {
                                   @RequestParam("placeName") String placeName,
                                   @RequestParam("placeDetails") String placeDetails,
                                   Model model) {
-        PlaceView placeView = placeService.getOne(id);
+        PlaceView placeView = placeFacade.getOne(id);
         placeView.setName(placeName);
         placeView.setDetails(placeDetails);
-        placeService.update(placeView);
+        placeFacade.update(placeView);
         return getPlacePage(model);
     }
 }

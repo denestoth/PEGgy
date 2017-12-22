@@ -1,23 +1,37 @@
 package com.dnstth.vtmg.graph.implementation;
 
 import com.dnstth.vtmg.graph.Edge;
+import com.dnstth.vtmg.graph.Vertex;
 
 /**
  * @author Denes_Toth
  */
 public class DefaultEdge implements Edge {
 
-    private String caption;
+    Vertex vertex1;
+    Vertex vertex2;
 
-    public DefaultEdge(String caption) {
-        this.caption = caption;
+    public DefaultEdge() {
     }
 
-    public String getCaption() {
-        return caption;
+    public DefaultEdge(Vertex vertex1, Vertex vertex2) {
+        this.vertex1 = vertex1;
+        this.vertex2 = vertex2;
     }
 
-    public void setCaption(String caption) {
-        this.caption = caption;
+    public Vertex getVertex1() {
+        return vertex1;
+    }
+
+    public void setVertex1(Vertex vertex1) {
+        this.vertex1 = vertex1;
+    }
+
+    public Vertex getVertex2() {
+        return vertex2;
+    }
+
+    public void setVertex2(Vertex vertex2) {
+        this.vertex2 = vertex2;
     }
 }

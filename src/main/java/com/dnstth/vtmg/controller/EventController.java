@@ -1,8 +1,8 @@
 package com.dnstth.vtmg.controller;
 
-import com.dnstth.vtmg.service.EventService;
-import com.dnstth.vtmg.service.PersonService;
-import com.dnstth.vtmg.service.PlaceService;
+import com.dnstth.vtmg.facade.EventFacade;
+import com.dnstth.vtmg.facade.PersonFacade;
+import com.dnstth.vtmg.facade.PlaceFacade;
 import com.dnstth.vtmg.view.EventView;
 import com.dnstth.vtmg.view.PersonView;
 import com.dnstth.vtmg.view.PlaceView;
@@ -26,17 +26,17 @@ import java.util.stream.Collectors;
 public class EventController {
 
     @Autowired
-    private EventService eventService;
+    private EventFacade eventFacade;
 
     @Autowired
-    private PlaceService placeService;
+    private PlaceFacade placeFacade;
 
     @Autowired
-    private PersonService personService;
+    private PersonFacade personFacade;
 
     @RequestMapping(value = "/api/event", method = RequestMethod.GET)
     public String getEventPage(Model model) {
-        List<EventView> eventViews = eventService.getAll();
+        List<EventView> eventViews = eventFacade.getAll();
         model.addAttribute("events", eventViews);
         return "event";
     }
@@ -52,22 +52,22 @@ public class EventController {
         eventView.setDescription(eventDescription);
         eventView.setDate(eventDate);
         eventView.setDetails(eventDetails);
-        eventView.setPlace(placeService.getOne(placeViewID));
-        eventView.setParticipants(personService.getAll().stream().filter(personView -> participantViewIds.contains(personView.getId())).collect(Collectors.toList()));
-        eventService.add(eventView);
+        eventView.setPlace(placeFacade.getOne(placeViewID));
+        eventView.setParticipants(personFacade.getAll().stream().filter(personView -> participantViewIds.contains(personView.getId())).collect(Collectors.toList()));
+        eventFacade.add(eventView);
         return getEventPage(model);
     }
 
     @RequestMapping(value = "/api/event/delete", method = RequestMethod.POST)
     public String deleteEvent(@RequestParam("id") int id,
                               Model model) {
-        eventService.delete(id);
+        eventFacade.delete(id);
         return getEventPage(model);
     }
 
     @RequestMapping(value = "api/event/update", method = RequestMethod.GET)
     public String updateEvent(@RequestParam("id") int id, Model model) {
-        model.addAttribute("event", eventService.getOne(id));
+        model.addAttribute("event", eventFacade.getOne(id));
         return "editEvent";
     }
 
@@ -77,28 +77,28 @@ public class EventController {
                                   @RequestParam("eventDate") @DateTimeFormat(pattern = "dd.MM.yyyy HH:mm") Date eventDate,
                                   @RequestParam("eventDetails") String eventDetails,
                                   @RequestParam("placeViewId") Integer placeViewID,
-                                  @RequestParam("participandViewIds") List<Integer> participantViewIds,
+                                  @RequestParam("participantViewIds") List<Integer> participantViewIds,
                                   Model model) {
-        EventView eventView = eventService.getOne(id);
+        EventView eventView = eventFacade.getOne(id);
         eventView.setDescription(eventDescription);
         eventView.setDate(eventDate);
         eventView.setDetails(eventDetails);
-        eventView.setPlace(placeService.getOne(placeViewID));
-        eventView.setParticipants(personService.getAll().stream().filter(personView -> participantViewIds.contains(personView.getId())).collect(Collectors.toList()));
-        eventService.update(eventView);
+        eventView.setPlace(placeFacade.getOne(placeViewID));
+        eventView.setParticipants(personFacade.getAll().stream().filter(personView -> participantViewIds.contains(personView.getId())).collect(Collectors.toList()));
+        eventFacade.update(eventView);
         return getEventPage(model);
     }
 
     @ModelAttribute("allPlaces")
     public List<PlaceView> populatePlaces() {
-        List<PlaceView> placeViews = placeService.getAll();
+        List<PlaceView> placeViews = placeFacade.getAll();
         placeViews.sort((place1, place2) -> place1.getName().compareTo(place2.getName()));
         return placeViews;
     }
 
     @ModelAttribute("allPeople")
     public List<PersonView> populatePeople() {
-        List<PersonView> personViews = personService.getAll();
+        List<PersonView> personViews = personFacade.getAll();
         personViews.sort((person1, person2) -> person1.getName().compareTo(person2.getName()));
         return personViews;
     }

@@ -1,8 +1,8 @@
 package com.dnstth.vtmg.controller;
 
-import com.dnstth.vtmg.service.GenderService;
-import com.dnstth.vtmg.service.KindService;
-import com.dnstth.vtmg.service.PersonService;
+import com.dnstth.vtmg.facade.GenderFacade;
+import com.dnstth.vtmg.facade.KindFacade;
+import com.dnstth.vtmg.facade.PersonFacade;
 import com.dnstth.vtmg.view.GenderView;
 import com.dnstth.vtmg.view.KindView;
 import com.dnstth.vtmg.view.PersonView;
@@ -26,17 +26,17 @@ import java.util.List;
 public class PersonController {
 
     @Autowired
-    private PersonService personService;
+    private PersonFacade personFacade;
 
     @Autowired
-    private GenderService genderService;
+    private GenderFacade genderFacade;
 
     @Autowired
-    private KindService kindService;
+    private KindFacade kindFacade;
 
     @RequestMapping(value = "/api/person", method = RequestMethod.GET)
     public String getPersonPage(Model model) {
-        List<PersonView> personViews = personService.getAll();
+        List<PersonView> personViews = personFacade.getAll();
         model.addAttribute("people", personViews);
         return "person";
     }
@@ -54,10 +54,10 @@ public class PersonController {
         personView.setBirthDate(personBirthDate);
         personView.setDeathDate(personDeathDate);
         personView.setDetails(personDetails);
-        personView.setGender(genderService.getOne(personGenderId));
-        personView.setKind(kindService.getOne(personKindId));
+        personView.setGender(genderFacade.getOne(personGenderId));
+        personView.setKind(kindFacade.getOne(personKindId));
         personView.setEvents(Collections.emptyList());
-        personService.add(personView);
+        personFacade.add(personView);
         return getPersonPage(model);
     }
 
@@ -65,7 +65,7 @@ public class PersonController {
     public String deletePerson(@RequestParam("id") int id,
                                Model model) {
         try {
-            personService.delete(id);
+            personFacade.delete(id);
         } catch (Exception e) {
             model.addAttribute("error", "Could not delete entry, other entries depending on it.");
         }
@@ -75,7 +75,7 @@ public class PersonController {
     @RequestMapping(value = "/api/person/update", method = RequestMethod.GET)
     public String updatePerson(@RequestParam("id") int id,
                                Model model) {
-        model.addAttribute("person", personService.getOne(id));
+        model.addAttribute("person", personFacade.getOne(id));
         return "editPerson";
     }
 
@@ -88,27 +88,27 @@ public class PersonController {
                                    @RequestParam("personGenderId") int personGenderId,
                                    @RequestParam("personKindId") int personKindId,
                                    Model model) {
-        PersonView personView = personService.getOne(id);
+        PersonView personView = personFacade.getOne(id);
         personView.setName(personName);
         personView.setBirthDate(personBirthDate);
         personView.setDeathDate(personDeathDate);
         personView.setDetails(personDetails);
-        personView.setGender(genderService.getOne(personGenderId));
-        personView.setKind(kindService.getOne(personKindId));
-        personService.update(personView);
+        personView.setGender(genderFacade.getOne(personGenderId));
+        personView.setKind(kindFacade.getOne(personKindId));
+        personFacade.update(personView);
         return getPersonPage(model);
     }
 
     @ModelAttribute("allKinds")
     public List<KindView> populateKinds() {
-        List<KindView> kindViews = kindService.getAll();
+        List<KindView> kindViews = kindFacade.getAll();
         kindViews.sort((kind1, kind2) -> kind1.getDetails().compareTo(kind2.getDetails()));
         return kindViews;
     }
 
     @ModelAttribute("allGenders")
     public List<GenderView> populateGenders() {
-        List<GenderView> genderViews = genderService.getAll();
+        List<GenderView> genderViews = genderFacade.getAll();
         genderViews.sort((gender1, gender2) -> gender1.getDescription().compareTo(gender2.getDescription()));
         return genderViews;
     }

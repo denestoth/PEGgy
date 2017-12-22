@@ -1,6 +1,6 @@
-package com.dnstth.vtmg.service;
+package com.dnstth.vtmg.facade;
 
-import com.dnstth.vtmg.dal.dao.GenderDao;
+import com.dnstth.vtmg.dal.service.GenderService;
 import com.dnstth.vtmg.transformer.GenderTransformer;
 import com.dnstth.vtmg.view.GenderView;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,36 +12,36 @@ import java.util.List;
  * Created by Denes_Toth
  */
 @Service
-public class DefaultGenderService implements GenderService {
+public class DefaultGenderFacade implements GenderFacade {
 
     @Autowired
-    private GenderDao genderDao;
+    private GenderService genderService;
 
     @Autowired
     private GenderTransformer genderTransformer;
 
     @Override
     public List<GenderView> getAll() {
-        return genderTransformer.dtosToViews(genderDao.findAll());
+        return genderTransformer.dtosToViews(genderService.findAll());
     }
 
     @Override
     public GenderView getOne(int id) {
-        return genderTransformer.dtoToView(genderDao.findOne(id));
+        return genderTransformer.dtoToView(genderService.findOne(id));
     }
 
     @Override
     public void add(GenderView genderView) {
-        genderDao.add(genderTransformer.viewToDto(genderView));
+        genderService.add(genderTransformer.viewToDto(genderView));
     }
 
     @Override
     public void delete(int id) {
-        genderDao.delete(genderDao.findOne(id));
+        genderService.delete(genderService.findOne(id));
     }
 
     @Override
     public void update(GenderView genderView) {
-        genderDao.update(genderTransformer.viewToDto(genderView));
+        genderService.update(genderTransformer.viewToDto(genderView));
     }
 }

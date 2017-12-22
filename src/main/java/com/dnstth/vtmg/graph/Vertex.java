@@ -5,4 +5,6 @@ package com.dnstth.vtmg.graph;
  */
 public interface Vertex {
 
+    String getCaption();
+
 }

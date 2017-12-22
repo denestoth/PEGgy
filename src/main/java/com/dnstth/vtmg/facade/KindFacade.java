@@ -1,4 +1,4 @@
-package com.dnstth.vtmg.service;
+package com.dnstth.vtmg.facade;
 
 import com.dnstth.vtmg.view.KindView;
 
@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by Denes_Toth
  */
-public interface KindService {
+public interface KindFacade {
 
     List<KindView> getAll();
 

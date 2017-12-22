@@ -2,7 +2,6 @@ package com.dnstth.vtmg.graph.implementation;
 
 import com.dnstth.vtmg.graph.Edge;
 import com.dnstth.vtmg.graph.Graph;
-import com.dnstth.vtmg.graph.Vertex;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,14 +13,14 @@ public class DefaultGraph implements Graph {
 
     private List<Edge> edges;
 
-    private List<Vertex> vertices;
+    private List<Object> vertices;
 
     public DefaultGraph() {
         this.edges = new ArrayList<>();
         this.vertices = new ArrayList<>();
     }
 
-    public DefaultGraph(List<Edge> edges, List<Vertex> vertices) {
+    public DefaultGraph(List<Edge> edges, List<Object> vertices) {
         this.edges = edges;
         this.vertices = vertices;
     }
@@ -38,11 +37,23 @@ public class DefaultGraph implements Graph {
         this.edges.add(edge);
     }
 
-    public List<Vertex> getVertices() {
+    public void addEdges(List<Edge> edges) {
+        edges.addAll(edges);
+    }
+
+    public List<Object> getVertices() {
         return vertices;
     }
 
-    public void setVertices(List<Vertex> vertices) {
+    public void setVertices(List<Object> vertices) {
         this.vertices = vertices;
+    }
+
+    public void addVertex(Object vertex) {
+        vertices.add(vertex);
+    }
+
+    public void addVertices(List<Object> vertices) {
+        vertices.addAll(vertices);
     }
 }

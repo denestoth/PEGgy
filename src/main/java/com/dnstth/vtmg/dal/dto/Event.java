@@ -31,6 +31,11 @@ public class Event {
     private Place place;
 
     @ManyToMany
+    @JoinTable(
+            name = "EventParticipants",
+            inverseJoinColumns = { @JoinColumn(name="personid") },
+            joinColumns = { @JoinColumn(name="eventid")}
+    )
     private List<Person> participants;
 
     public int getId() {

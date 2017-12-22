@@ -1,6 +1,6 @@
-package com.dnstth.vtmg.service;
+package com.dnstth.vtmg.facade;
 
-import com.dnstth.vtmg.dal.dao.EventDao;
+import com.dnstth.vtmg.dal.service.EventService;
 import com.dnstth.vtmg.transformer.EventTransformer;
 import com.dnstth.vtmg.view.EventView;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,36 +12,36 @@ import java.util.List;
  * Created by Denes_Toth
  */
 @Service
-public class DefaultEventService implements EventService {
+public class DefaultEventFacade implements EventFacade {
 
     @Autowired
-    private EventDao eventDao;
+    private EventService eventService;
 
     @Autowired
     private EventTransformer eventTransformer;
 
     @Override
     public List<EventView> getAll() {
-        return eventTransformer.dtosToViews(eventDao.findAll());
+        return eventTransformer.dtosToViews(eventService.findAll());
     }
 
     @Override
     public EventView getOne(int id) {
-        return eventTransformer.dtoToView(eventDao.findOne(id));
+        return eventTransformer.dtoToView(eventService.findOne(id));
     }
 
     @Override
     public void add(EventView eventView) {
-        eventDao.add(eventTransformer.viewToDto(eventView));
+        eventService.add(eventTransformer.viewToDto(eventView));
     }
 
     @Override
     public void delete(int id) {
-        eventDao.delete(eventDao.findOne(id));
+        eventService.delete(eventService.findOne(id));
     }
 
     @Override
     public void update(EventView eventView) {
-        eventDao.update(eventTransformer.viewToDto(eventView));
+        eventService.update(eventTransformer.viewToDto(eventView));
     }
 }

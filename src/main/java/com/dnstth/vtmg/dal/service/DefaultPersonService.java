@@ -1,4 +1,4 @@
-package com.dnstth.vtmg.dal.dao;
+package com.dnstth.vtmg.dal.service;
 
 import com.dnstth.vtmg.dal.dto.Person;
 import com.dnstth.vtmg.dal.repository.PersonRepository;
@@ -12,7 +12,7 @@ import java.util.Optional;
  * Created by Denes_Toth
  */
 @Component
-public class DefaultPersonDao implements PersonDao {
+public class DefaultPersonService implements PersonService {
 
     @Autowired
     private PersonRepository personRepository;

@@ -1,6 +1,6 @@
-package com.dnstth.vtmg.service;
+package com.dnstth.vtmg.facade;
 
-import com.dnstth.vtmg.dal.dao.PlaceDao;
+import com.dnstth.vtmg.dal.service.PlaceService;
 import com.dnstth.vtmg.transformer.PlaceTransformer;
 import com.dnstth.vtmg.view.PlaceView;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,36 +12,36 @@ import java.util.List;
  * Created by Denes_Toth
  */
 @Service
-public class DefaultPlaceService implements PlaceService {
+public class DefaultPlaceFacade implements PlaceFacade {
 
     @Autowired
-    private PlaceDao placeDao;
+    private PlaceService placeService;
 
     @Autowired
     private PlaceTransformer placeTransformer;
 
     @Override
     public List<PlaceView> getAll() {
-        return placeTransformer.dtosToViews(placeDao.findAll());
+        return placeTransformer.dtosToViews(placeService.findAll());
     }
 
     @Override
     public PlaceView getOne(int id) {
-        return placeTransformer.dtoToView(placeDao.findOne(id));
+        return placeTransformer.dtoToView(placeService.findOne(id));
     }
 
     @Override
     public void add(PlaceView placeView) {
-        placeDao.add(placeTransformer.viewToDto(placeView));
+        placeService.add(placeTransformer.viewToDto(placeView));
     }
 
     @Override
     public void delete(int id) {
-        placeDao.delete(placeDao.findOne(id));
+        placeService.delete(placeService.findOne(id));
     }
 
     @Override
     public void update(PlaceView placeView) {
-        placeDao.update(placeTransformer.viewToDto(placeView));
+        placeService.update(placeTransformer.viewToDto(placeView));
     }
 }

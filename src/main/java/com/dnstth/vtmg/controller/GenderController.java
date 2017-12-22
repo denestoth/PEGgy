@@ -1,6 +1,6 @@
 package com.dnstth.vtmg.controller;
 
-import com.dnstth.vtmg.service.GenderService;
+import com.dnstth.vtmg.facade.GenderFacade;
 import com.dnstth.vtmg.view.GenderView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,11 +18,11 @@ import java.util.List;
 public class GenderController {
 
     @Autowired
-    private GenderService genderService;
+    private GenderFacade genderFacade;
 
     @RequestMapping(value = "/api/gender", method = RequestMethod.GET)
     public String getGenderPage(Model model) {
-        List<GenderView> genderViews = genderService.getAll();
+        List<GenderView> genderViews = genderFacade.getAll();
         model.addAttribute("genders", genderViews);
         return "gender";
     }
@@ -32,7 +32,7 @@ public class GenderController {
                                Model model) {
         GenderView genderView = new GenderView();
         genderView.setDescription(genderDescription);
-        genderService.add(genderView);
+        genderFacade.add(genderView);
         return getGenderPage(model);
     }
 
@@ -40,7 +40,7 @@ public class GenderController {
     public String deleteGender(@RequestParam("id") int id,
                                Model model) {
         try {
-            genderService.delete(id);
+            genderFacade.delete(id);
         } catch (Exception e) {
             model.addAttribute("error", "Could not delete entry, other entries depending on it.");
         }
@@ -50,7 +50,7 @@ public class GenderController {
     @RequestMapping(value = "/api/gender/update", method = RequestMethod.GET)
     public String updateGender(@RequestParam("id") int id,
                                Model model) {
-        model.addAttribute("gender", genderService.getOne(id));
+        model.addAttribute("gender", genderFacade.getOne(id));
         return "editGender";
     }
 
@@ -58,9 +58,9 @@ public class GenderController {
     public String saveUpdateGender(@RequestParam("id") int id,
                                    @RequestParam("genderDescription") String genderDescription,
                                    Model model) {
-        GenderView genderView = genderService.getOne(id);
+        GenderView genderView = genderFacade.getOne(id);
         genderView.setDescription(genderDescription);
-        genderService.update(genderView);
+        genderFacade.update(genderView);
         return getGenderPage(model);
     }
 }
