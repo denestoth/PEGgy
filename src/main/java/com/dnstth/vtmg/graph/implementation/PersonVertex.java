@@ -13,10 +13,6 @@ public class PersonVertex extends DefaultVertex {
         this.person = person;
     }
 
-    public Person getPersonView() {
-        return person;
-    }
-
     public void setPerson(Person person) {
         this.person = person;
     }

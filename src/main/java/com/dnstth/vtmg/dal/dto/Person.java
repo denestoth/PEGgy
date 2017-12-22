@@ -35,7 +35,7 @@ public class Person {
     @ManyToOne
     private Gender gender;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     @JoinTable(
             name = "EventParticipants",
             joinColumns = { @JoinColumn(name="personid") },

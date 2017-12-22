@@ -11,9 +11,6 @@ public class DefaultEdge implements Edge {
     Vertex vertex1;
     Vertex vertex2;
 
-    public DefaultEdge() {
-    }
-
     public DefaultEdge(Vertex vertex1, Vertex vertex2) {
         this.vertex1 = vertex1;
         this.vertex2 = vertex2;
@@ -23,15 +20,7 @@ public class DefaultEdge implements Edge {
         return vertex1;
     }
 
-    public void setVertex1(Vertex vertex1) {
-        this.vertex1 = vertex1;
-    }
-
     public Vertex getVertex2() {
         return vertex2;
-    }
-
-    public void setVertex2(Vertex vertex2) {
-        this.vertex2 = vertex2;
     }
 }

@@ -50,7 +50,6 @@ public class PersonTransformer implements Transformer<Person, PersonView> {
         personView.setBirthDate(person.getBirthDate());
         personView.setDeathDate(person.getDeathDate());
         personView.setDetails(person.getDetails());
-        personView.setEvents(eventTransformer.dtosToViews(person.getEvents()));
         personView.setGender(genderTransformer.dtoToView(person.getGender()));
         personView.setKind(kindTransformer.dtoToView(person.getKind()));
         return personView;

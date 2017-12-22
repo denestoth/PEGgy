@@ -1,8 +1,9 @@
 package com.dnstth.vtmg.controller;
 
-import com.dnstth.vtmg.graph.SomeGraphCreator;
+import com.dnstth.vtmg.graph.factory.implementation.PersonAndEventGraphFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -14,16 +15,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MainController {
 
     @Autowired
-    private SomeGraphCreator someGraphCreator;
+    private PersonAndEventGraphFactory personAndEventGraphFactory;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String getIndex() {
-        some();
+    public String getIndex(Model model) {
+        String image = some();
+        model.addAttribute("image", image);
         return "index";
     }
 
-    private void some() {
-        someGraphCreator.doSomeGraph();
+    private String some() {
+        return personAndEventGraphFactory.createFullGraph();
     }
 
 }

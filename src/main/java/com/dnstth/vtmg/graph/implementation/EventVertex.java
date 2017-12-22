@@ -13,14 +13,6 @@ public class EventVertex extends DefaultVertex {
         this.event = event;
     }
 
-    public Event getEventView() {
-        return event;
-    }
-
-    public void setEventView(Event eventView) {
-        this.event = eventView;
-    }
-
     @Override
     public String getCaption() {
         return this.event.getDescription();

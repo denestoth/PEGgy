@@ -42,9 +42,14 @@ INSERT INTO person(id, name, birth_date, death_date, details, kind_id, gender_id
 INSERT INTO person(id, name, birth_date, death_date, details, kind_id, gender_id) VALUES (2, 'Test Persona', '2006-06-06', '2020-07-07', 'some details', 1, 2);
 INSERT INTO person(id, name, birth_date, death_date, details, kind_id, gender_id) VALUES (3, 'Third Test Person', '2006-06-06', '2020-07-07', 'some details', 1, 2);
 INSERT INTO person(id, name, birth_date, death_date, details, kind_id, gender_id) VALUES (4, 'Unknown someone', '2006-06-06', '2020-07-07', 'some details', 1, 2);
+INSERT INTO person(id, name, birth_date, death_date, details, kind_id, gender_id) VALUES (5, 'Known other one', '2006-06-06', '2020-07-07', 'some details', 1, 2);
+INSERT INTO person(id, name, birth_date, death_date, details, kind_id, gender_id) VALUES (6, 'Emperor', '2006-06-06', '2020-07-07', 'some details', 1, 2);
+INSERT INTO person(id, name, birth_date, death_date, details, kind_id, gender_id) VALUES (7, 'Squirrel', '2006-06-06', '2020-07-07', 'some details', 1, 2);
 
 INSERT INTO event(id, date, description, details, place_id) VALUES (1, '2017-11-18', 'Some great event', 'This is really a great event', 1);
 INSERT INTO event(id, date, description, details, place_id) VALUES (2, '2017-11-18', 'Another great event', 'This is really a great event', 1);
+INSERT INTO event(id, date, description, details, place_id) VALUES (3, '2017-11-18', 'Not so great event', 'This is really a great event', 1);
+INSERT INTO event(id, date, description, details, place_id) VALUES (4, '2017-11-18', 'Greatest event EVER', 'This is really a great event', 1);
 
 INSERT INTO event_participants(eventid, personid) VALUES (1, 1);
 INSERT INTO event_participants(eventid, personid) VALUES (1, 2);
@@ -52,3 +57,11 @@ INSERT INTO event_participants(eventid, personid) VALUES (1, 3);
 INSERT INTO event_participants(eventid, personid) VALUES (2, 2);
 INSERT INTO event_participants(eventid, personid) VALUES (2, 3);
 INSERT INTO event_participants(eventid, personid) VALUES (2, 4);
+INSERT INTO event_participants(eventid, personid) VALUES (2, 5);
+INSERT INTO event_participants(eventid, personid) VALUES (3, 1);
+INSERT INTO event_participants(eventid, personid) VALUES (3, 2);
+INSERT INTO event_participants(eventid, personid) VALUES (3, 3);
+INSERT INTO event_participants(eventid, personid) VALUES (3, 4);
+INSERT INTO event_participants(eventid, personid) VALUES (3, 5);
+INSERT INTO event_participants(eventid, personid) VALUES (3, 6);
+INSERT INTO event_participants(eventid, personid) VALUES (3, 7);
