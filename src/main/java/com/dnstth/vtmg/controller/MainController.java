@@ -19,8 +19,13 @@ public class MainController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getIndex(Model model) {
-        String image = some();
-        model.addAttribute("image", image);
+        try {
+            String image = some();
+            model.addAttribute("image", image);
+        }
+        catch(Exception ex) {
+            //V8 exception, has to do something about it...
+        }
         return "index";
     }
 
