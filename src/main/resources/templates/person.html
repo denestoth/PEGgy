@@ -88,49 +88,59 @@
     </div>
 </div>
 <!--Details end-->
-
-<!--List begin-->
-<div class="container-fluid">
-    <!--List header begin-->
-    <div class="row">
-        <div class="col-xs-6 col-md-4"></div>
-        <div class="col-xs-6 col-md-4" align="center"><h3><label th:text="#{menu.person}"></label></h3></div>
-        <div class="col-xs-6 col-md-4"></div>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        {{pageTitle}}
     </div>
-    <!--List header end-->
-
-    <!--List content begin-->
-    <th:block th:each="person : ${people}">
-        <div class="row" th:classappend="${person.id % 2 == 0 ? 'bg-primary' : 'bg-info' }">
-            <div class="col-md-1"></div>
-            <div class="col-md-2" th:text="${person.name}"></div>
-            <div class="col-md-1" th:text="${#dates.format(person.birthDate, 'dd-MMM-yyyy')}"></div>
-            <div class="col-md-1" th:text="${#dates.format(person.deathDate, 'dd-MMM-yyyy')}"></div>
-            <div class="col-md-2" th:text="${person.details}"></div>
-            <div class="col-md-1" th:text="${person.kind.details}"></div>
-            <div class="col-md-1" th:text="${person.gender.description}"></div>
-            <div class="col-md-2" align="right">
-                <div class="col-md-8" align="right">
-                    <form class="form-horizontal" action="/api/person/update" method="get"
-                          enctype="multipart/form-data">
-                        <input class="btn btn-warning btn-xs" type="submit" th:value="#{button.edit}"/>
-                        <input type="hidden" name="id" th:value="${person.id}">
-                    </form>
-                </div>
-                <div class="col-md-4" align="right">
-                    <form class="form-horizontal" action="/api/person/delete" method="post"
-                          enctype="multipart/form-data">
-                        <input class="btn btn-danger btn-xs" type="submit" th:value="#{button.delete}"/>
-                        <input type="hidden" name="id" th:value="${person.id}">
-                    </form>
-                </div>
-            </div>
-            <div class="col-md-1"></div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Birth</th>
+                        <th>Death</th>
+                        <th>Details</th>
+                        <th>Kind</th>
+                        <th>Gender</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <th:block th:each="person : ${people}">
+                        <tr>
+                            <td th:text="${person.name}" />
+                            <td th:text="${#dates.format(person.birthDate, 'dd-MMM-yyyy')}" />
+                            <td th:text="${#dates.format(person.deathDate, 'dd-MMM-yyyy')}" />
+                            <td th:text="${person.details}" />
+                            <td th:text="${person.kind.details}" />
+                            <td th:text="${person.gender.description}" />
+                            <td>
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-xs-4 pl--0 ml--0">
+                                            <form class="form-horizontal" action="/api/person/update" method="get" enctype="multipart/form-data">
+                                                <input class="btn btn-warning btn-xs" type="submit" th:value="#{button.edit}" />
+                                                <input type="hidden" name="id" th:value="${person.id}" >
+                                            </form>
+                                        </div>
+                                        <div class="col-xs-4 pl--0 ml--0">
+                                            <form class="form-horizontal" action="/api/person/delete" method="post" enctype="multipart/form-data">
+                                                <input class="btn btn-danger btn-xs" type="submit" th:value="#{button.delete}" />
+                                                <input type="hidden" name="id" th:value="${person.id}" >
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </th:block>
+                </tbody>
+            </table>
         </div>
-    </th:block>
-    <!--List content end-->
+    </div>
 </div>
-<!--List end-->
+
 <script>
     jQuery('#personBirthDateInput').datetimepicker({
     timepicker:false,
