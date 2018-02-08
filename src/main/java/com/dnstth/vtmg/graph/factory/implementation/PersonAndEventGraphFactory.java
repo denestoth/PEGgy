@@ -87,6 +87,9 @@ public class PersonAndEventGraphFactory implements GraphFactory<Person> {
             graph = graph.with(nodes.entrySet().stream().map(entry -> entry.getValue()).collect(Collectors.toList()).get(i));
         }
 
-        return Graphviz.fromGraph(graph).width(GRAPH_SVG_WIDTH).render(Format.SVG).toString();
+        Graphviz.initEngine();
+        String graphDescriptor = Graphviz.fromGraph(graph).width(GRAPH_SVG_WIDTH).render(Format.SVG).toString();
+        Graphviz.releaseEngine();
+        return graphDescriptor;
     }
 }
