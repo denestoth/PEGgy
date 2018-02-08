@@ -116,20 +116,19 @@
                             <td th:text="${person.kind.details}" />
                             <td th:text="${person.gender.description}" />
                             <td>
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-xs-4 pl--0 ml--0">
-                                            <form class="form-horizontal" action="/api/person/update" method="get" enctype="multipart/form-data">
-                                                <input class="btn btn-warning btn-xs" type="submit" th:value="#{button.edit}" />
-                                                <input type="hidden" name="id" th:value="${person.id}" >
-                                            </form>
-                                        </div>
-                                        <div class="col-xs-4 pl--0 ml--0">
-                                            <form class="form-horizontal" action="/api/person/delete" method="post" enctype="multipart/form-data">
-                                                <input class="btn btn-danger btn-xs" type="submit" th:value="#{button.delete}" />
-                                                <input type="hidden" name="id" th:value="${person.id}" >
-                                            </form>
-                                        </div>
+                                <div class="row">
+                                    <div class="col-xs-1">
+                                        <form class="form-inline" action="/api/person/update" method="get" enctype="multipart/form-data">
+                                            <input class="btn btn-warning btn-xs" type="submit" th:value="#{button.edit}" />
+                                            <input type="hidden" name="id" th:value="${person.id}" >
+                                        </form>
+                                    </div>
+                                    <div class="col-xs-1" />
+                                    <div class="col-xs-1">
+                                        <form class="form-inline" action="/api/person/delete" method="post" enctype="multipart/form-data">
+                                            <input class="btn btn-danger btn-xs" type="submit" th:value="#{button.delete}" />
+                                            <input type="hidden" name="id" th:value="${person.id}" >
+                                        </form>
                                     </div>
                                 </div>
                             </td>
