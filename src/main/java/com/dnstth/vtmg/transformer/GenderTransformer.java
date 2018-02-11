@@ -4,6 +4,7 @@ import com.dnstth.vtmg.dal.dto.Gender;
 import com.dnstth.vtmg.view.GenderView;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,7 +24,7 @@ public class GenderTransformer implements Transformer<Gender, GenderView> {
 
     @Override
     public List<Gender> viewsToDtos(List<GenderView> genderViews) {
-        return genderViews.stream().map(gv -> viewToDto(gv)).collect(Collectors.toList());
+        return genderViews != null ? genderViews.stream().map(gv -> viewToDto(gv)).collect(Collectors.toList()) : null;
     }
 
     @Override
@@ -36,6 +37,6 @@ public class GenderTransformer implements Transformer<Gender, GenderView> {
 
     @Override
     public List<GenderView> dtosToViews(List<Gender> genders) {
-        return genders.stream().map(g -> dtoToView(g)).collect(Collectors.toList());
+        return genders != null ? genders.stream().map(g -> dtoToView(g)).collect(Collectors.toList()) : new ArrayList<>();
     }
 }

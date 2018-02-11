@@ -5,6 +5,7 @@ import com.dnstth.vtmg.view.EventView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,7 +35,7 @@ public class EventTransformer implements Transformer<Event, EventView> {
 
     @Override
     public List<Event> viewsToDtos(List<EventView> eventViews) {
-        return eventViews.stream().map(ev -> viewToDto(ev)).collect(Collectors.toList());
+        return eventViews != null ? eventViews.stream().map(ev -> viewToDto(ev)).collect(Collectors.toList()) : new ArrayList<>();
     }
 
     @Override
@@ -51,6 +52,6 @@ public class EventTransformer implements Transformer<Event, EventView> {
 
     @Override
     public List<EventView> dtosToViews(List<Event> events) {
-        return events.stream().map(e -> dtoToView(e)).collect(Collectors.toList());
+        return events != null ? events.stream().map(e -> dtoToView(e)).collect(Collectors.toList()) : new ArrayList<>();
     }
 }

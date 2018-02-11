@@ -15,7 +15,6 @@
 </head>
 <body>
 
-
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -32,7 +31,6 @@
     </div>
 </nav>
 
-<!--Details begin-->
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-3"></div>
@@ -85,54 +83,60 @@
         <div class="col-xs-3"></div>
     </div>
 </div>
-<!--Details end-->
 
-<!--List begin-->
-<div class="container-fluid">
-    <!--List header begin-->
-    <div class="row">
-        <div class="col-xs-6 col-xs-4"></div>
-        <div class="col-xs-6 col-xs-4" align="center"><h3><label th:text="#{menu.place}"></label></h3></div>
-        <div class="col-xs-6 col-xs-4"></div>
-    </div>
-    <!--List header end-->
-
-    <!--List content begin-->
-    <th:block th:each="event : ${events}">
-        <div class="row" th:classappend="${event.id % 2 == 0 ? 'bg-primary' : 'bg-info' }">
-            <div class="col-xs-1"></div>
-            <div class="col-xs-2" th:text="${event.description}"></div>
-            <div class="col-xs-1" th:text="${#dates.format(event.date, 'dd-MMM-yyyy HH:mm')}"></div>
-            <div class="col-xs-1" th:text="${event.place.name}"></div>
-            <div class="col-xs-2" th:text="${#strings.listJoin(event.participants.![name], ', ')}"></div>
-            <div class="col-xs-2" th:text="${event.details}"></div>
-            <div class="col-xs-2" align="right">
-                <div class="col-xs-8" align="right">
-                    <form class="form-horizontal" action="/api/event/update" method="get" enctype="multipart/form-data">
-                        <input class="btn btn-warning btn-xs" type="submit" th:value="#{button.edit}"/>
-                        <input type="hidden" name="id" th:value="${event.id}">
-                    </form>
-                </div>
-                <div class="col-xs-4" align="right">
-                    <form class="form-horizontal" action="/api/event/delete" method="post"
-                          enctype="multipart/form-data">
-                        <input class="btn btn-danger btn-xs" type="submit" th:value="#{button.delete}"/>
-                        <input type="hidden" name="id" th:value="${event.id}">
-                    </form>
-                </div>
-            </div>
-            <div class="col-xs-1"></div>
+<div class="panel panel-primary">
+    <div class="panel-heading" th:text="#{menu.event}" />
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Place</th>
+                        <th>Participants</th>
+                        <th>Details</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <th:block th:each="event : ${events}">
+                        <tr>
+                            <td th:text="${event.description}" />
+                            <td th:text="${#dates.format(event.date, 'dd-MMM-yyyy HH:mm')}" />
+                            <td th:text="${event.place.name}" />
+                            <td th:text="${#strings.listJoin(event.participants.![name], ', ')}" />
+                            <td th:text="${event.details}" />
+                            <td>
+                                <div class="row">
+                                    <div class="col-xs-1">
+                                        <form class="form-inline"action="/api/event/update" method="get" enctype="multipart/form-data">
+                                            <input class="btn btn-warning btn-xs" type="submit" th:value="#{button.edit}"/>
+                                            <input type="hidden" name="id" th:value="${event.id}">
+                                        </form>
+                                    </div>
+                                    <div class="col-xs-1" />
+                                    <div class="col-xs-1">
+                                        <form class="form-inline" action="/api/event/delete" method="post" enctype="multipart/form-data">
+                                            <input class="btn btn-danger btn-xs" type="submit" th:value="#{button.delete}"/>
+                                            <input type="hidden" name="id" th:value="${event.id}">
+                                        </form>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </th:block>
+                </tbody>
+            </table>
         </div>
-    </th:block>
-    <!--List content end-->
+    </div>
 </div>
-<!--List end-->
+
 <script>
     jQuery('#eventDateInput').datetimepicker({
     format:'d.m.Y H:i',
     lang:'hu'
     });
-
 </script>
 </body>
 </html>

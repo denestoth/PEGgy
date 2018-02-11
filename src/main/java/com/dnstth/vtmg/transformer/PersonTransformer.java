@@ -5,6 +5,7 @@ import com.dnstth.vtmg.view.PersonView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -39,7 +40,7 @@ public class PersonTransformer implements Transformer<Person, PersonView> {
 
     @Override
     public List<Person> viewsToDtos(List<PersonView> personViews) {
-        return personViews.stream().map(pv -> viewToDto(pv)).collect(Collectors.toList());
+        return personViews != null ? personViews.stream().map(pv -> viewToDto(pv)).collect(Collectors.toList()) : new ArrayList<>();
     }
 
     @Override
@@ -57,6 +58,6 @@ public class PersonTransformer implements Transformer<Person, PersonView> {
 
     @Override
     public List<PersonView> dtosToViews(List<Person> people) {
-        return people.stream().map(p -> dtoToView(p)).collect(Collectors.toList());
+        return people != null ? people.stream().map(p -> dtoToView(p)).collect(Collectors.toList()) : new ArrayList<>();
     }
 }

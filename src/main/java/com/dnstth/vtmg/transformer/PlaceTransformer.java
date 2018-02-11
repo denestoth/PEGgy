@@ -4,6 +4,7 @@ import com.dnstth.vtmg.dal.dto.Place;
 import com.dnstth.vtmg.view.PlaceView;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,7 +25,7 @@ public class PlaceTransformer implements Transformer<Place, PlaceView> {
 
     @Override
     public List<Place> viewsToDtos(List<PlaceView> placeViews) {
-        return placeViews.stream().map(pv -> viewToDto(pv)).collect(Collectors.toList());
+        return placeViews != null ? placeViews.stream().map(pv -> viewToDto(pv)).collect(Collectors.toList()) : new ArrayList<>();
     }
 
     @Override
@@ -38,6 +39,6 @@ public class PlaceTransformer implements Transformer<Place, PlaceView> {
 
     @Override
     public List<PlaceView> dtosToViews(List<Place> places) {
-        return places.stream().map(p -> dtoToView(p)).collect(Collectors.toList());
+        return places != null ? places.stream().map(p -> dtoToView(p)).collect(Collectors.toList()) : new ArrayList<>();
     }
 }

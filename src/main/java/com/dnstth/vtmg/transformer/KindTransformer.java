@@ -4,6 +4,7 @@ import com.dnstth.vtmg.dal.dto.Kind;
 import com.dnstth.vtmg.view.KindView;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,7 +24,7 @@ public class KindTransformer implements Transformer<Kind, KindView> {
 
     @Override
     public List<Kind> viewsToDtos(List<KindView> kindViews) {
-        return kindViews.stream().map(kv -> viewToDto(kv)).collect(Collectors.toList());
+        return kindViews != null ?  kindViews.stream().map(kv -> viewToDto(kv)).collect(Collectors.toList()) : new ArrayList<>();
     }
 
     @Override
@@ -36,6 +37,6 @@ public class KindTransformer implements Transformer<Kind, KindView> {
 
     @Override
     public List<KindView> dtosToViews(List<Kind> kinds) {
-        return kinds.stream().map(k -> dtoToView(k)).collect(Collectors.toList());
+        return kinds != null ? kinds.stream().map(k -> dtoToView(k)).collect(Collectors.toList()) : new ArrayList<>();
     }
 }
