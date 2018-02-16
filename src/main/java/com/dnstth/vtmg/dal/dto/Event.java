@@ -28,6 +28,7 @@ public class Event {
     private String details;
 
     @ManyToOne
+    @JoinColumn(name = "place_id")
     private Place place;
 
     @ManyToMany

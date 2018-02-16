@@ -20,7 +20,7 @@ public class Place {
     @Column
     private String details;
 
-    @OneToMany
+    @OneToMany(mappedBy = "place")
     private List<Event> events;
 
     public int getId() {

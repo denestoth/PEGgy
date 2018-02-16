@@ -17,7 +17,7 @@ public class Gender {
     @Column
     private String description;
 
-    @OneToMany
+    @OneToMany(mappedBy = "gender")
     private List<Person> persons;
 
     public int getId() {

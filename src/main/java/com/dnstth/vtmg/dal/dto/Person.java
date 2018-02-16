@@ -30,9 +30,11 @@ public class Person {
     private String details;
 
     @ManyToOne
+    @JoinColumn(name = "kind_id")
     private Kind kind;
 
     @ManyToOne
+    @JoinColumn(name = "gender_id")
     private Gender gender;
 
     @ManyToMany

@@ -17,7 +17,7 @@ public class Kind {
     @Column
     private String details;
 
-    @ManyToMany
+    @OneToMany(mappedBy = "kind")
     private List<Person> people;
 
     public int getId() {
