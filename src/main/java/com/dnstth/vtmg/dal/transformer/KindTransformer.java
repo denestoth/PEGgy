@@ -1,4 +1,4 @@
-package com.dnstth.vtmg.transformer;
+package com.dnstth.vtmg.dal.transformer;
 
 import com.dnstth.vtmg.dal.dto.Kind;
 import com.dnstth.vtmg.view.KindView;

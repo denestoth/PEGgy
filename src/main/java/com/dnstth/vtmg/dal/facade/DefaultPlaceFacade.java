@@ -1,7 +1,7 @@
-package com.dnstth.vtmg.facade;
+package com.dnstth.vtmg.dal.facade;
 
 import com.dnstth.vtmg.dal.service.PlaceService;
-import com.dnstth.vtmg.transformer.PlaceTransformer;
+import com.dnstth.vtmg.dal.transformer.PlaceTransformer;
 import com.dnstth.vtmg.view.PlaceView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

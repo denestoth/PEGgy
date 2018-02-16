@@ -1,7 +1,7 @@
-package com.dnstth.vtmg.facade;
+package com.dnstth.vtmg.dal.facade;
 
 import com.dnstth.vtmg.dal.service.KindService;
-import com.dnstth.vtmg.transformer.KindTransformer;
+import com.dnstth.vtmg.dal.transformer.KindTransformer;
 import com.dnstth.vtmg.view.KindView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

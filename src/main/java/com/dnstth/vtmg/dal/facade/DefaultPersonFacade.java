@@ -1,7 +1,7 @@
-package com.dnstth.vtmg.facade;
+package com.dnstth.vtmg.dal.facade;
 
 import com.dnstth.vtmg.dal.service.PersonService;
-import com.dnstth.vtmg.transformer.PersonTransformer;
+import com.dnstth.vtmg.dal.transformer.PersonTransformer;
 import com.dnstth.vtmg.view.PersonView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

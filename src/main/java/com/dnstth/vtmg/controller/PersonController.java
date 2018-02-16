@@ -1,8 +1,8 @@
 package com.dnstth.vtmg.controller;
 
-import com.dnstth.vtmg.facade.GenderFacade;
-import com.dnstth.vtmg.facade.KindFacade;
-import com.dnstth.vtmg.facade.PersonFacade;
+import com.dnstth.vtmg.dal.facade.GenderFacade;
+import com.dnstth.vtmg.dal.facade.KindFacade;
+import com.dnstth.vtmg.dal.facade.PersonFacade;
 import com.dnstth.vtmg.view.GenderView;
 import com.dnstth.vtmg.view.KindView;
 import com.dnstth.vtmg.view.PersonView;

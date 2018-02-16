@@ -1,6 +1,6 @@
 package com.dnstth.vtmg.controller;
 
-import com.dnstth.vtmg.facade.KindFacade;
+import com.dnstth.vtmg.dal.facade.KindFacade;
 import com.dnstth.vtmg.view.KindView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -1,7 +1,7 @@
-package com.dnstth.vtmg.facade;
+package com.dnstth.vtmg.dal.facade;
 
 import com.dnstth.vtmg.dal.service.EventService;
-import com.dnstth.vtmg.transformer.EventTransformer;
+import com.dnstth.vtmg.dal.transformer.EventTransformer;
 import com.dnstth.vtmg.view.EventView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

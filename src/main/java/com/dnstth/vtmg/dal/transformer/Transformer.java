@@ -1,4 +1,4 @@
-package com.dnstth.vtmg.transformer;
+package com.dnstth.vtmg.dal.transformer;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.dnstth.vtmg.transformer;
+package com.dnstth.vtmg.dal.transformer;
 
 import com.dnstth.vtmg.dal.dto.Place;
 import com.dnstth.vtmg.view.PlaceView;

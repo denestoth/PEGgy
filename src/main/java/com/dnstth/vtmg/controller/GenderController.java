@@ -1,6 +1,6 @@
 package com.dnstth.vtmg.controller;
 
-import com.dnstth.vtmg.facade.GenderFacade;
+import com.dnstth.vtmg.dal.facade.GenderFacade;
 import com.dnstth.vtmg.view.GenderView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

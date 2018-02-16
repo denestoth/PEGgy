@@ -1,7 +1,7 @@
-package com.dnstth.vtmg.facade;
+package com.dnstth.vtmg.dal.facade;
 
 import com.dnstth.vtmg.dal.service.GenderService;
-import com.dnstth.vtmg.transformer.GenderTransformer;
+import com.dnstth.vtmg.dal.transformer.GenderTransformer;
 import com.dnstth.vtmg.view.GenderView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

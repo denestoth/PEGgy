@@ -1,8 +1,8 @@
 package com.dnstth.vtmg.controller;
 
-import com.dnstth.vtmg.facade.EventFacade;
-import com.dnstth.vtmg.facade.PersonFacade;
-import com.dnstth.vtmg.facade.PlaceFacade;
+import com.dnstth.vtmg.dal.facade.EventFacade;
+import com.dnstth.vtmg.dal.facade.PersonFacade;
+import com.dnstth.vtmg.dal.facade.PlaceFacade;
 import com.dnstth.vtmg.view.EventView;
 import com.dnstth.vtmg.view.PersonView;
 import com.dnstth.vtmg.view.PlaceView;
