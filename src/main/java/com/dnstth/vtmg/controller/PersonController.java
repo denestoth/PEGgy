@@ -1,5 +1,9 @@
 package com.dnstth.vtmg.controller;
 
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+
 import com.dnstth.vtmg.dal.facade.GenderFacade;
 import com.dnstth.vtmg.dal.facade.KindFacade;
 import com.dnstth.vtmg.dal.facade.PersonFacade;
@@ -14,10 +18,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Denes_Toth
@@ -42,28 +42,33 @@ public class PersonController {
     }
 
     @RequestMapping(value = "/api/person", method = RequestMethod.POST)
-    public String addNewPerson(@RequestParam("personName") String personName,
-                               @RequestParam("personBirthDate") @DateTimeFormat(pattern = "dd.MM.yyyy") Date personBirthDate,
-                               @RequestParam("personDeathDate") @DateTimeFormat(pattern = "dd.MM.yyyy") Date personDeathDate,
-                               @RequestParam("personDetails") String personDetails,
-                               @RequestParam("personGenderId") int personGenderId,
-                               @RequestParam("personKindId") int personKindId,
-                               Model model) {
-        PersonView personView = new PersonView();
-        personView.setName(personName);
-        personView.setBirthDate(personBirthDate);
-        personView.setDeathDate(personDeathDate);
-        personView.setDetails(personDetails);
-        personView.setGender(genderFacade.getOne(personGenderId));
-        personView.setKind(kindFacade.getOne(personKindId));
-        personView.setEvents(Collections.emptyList());
+    public String addNewPerson(
+        @RequestParam("personName") String personName,
+        @RequestParam("personBirthDate") @DateTimeFormat(pattern = "dd.MM.yyyy") Date personBirthDate,
+        @RequestParam("personDeathDate") @DateTimeFormat(pattern = "dd.MM.yyyy") Date personDeathDate,
+        @RequestParam("personDetails") String personDetails,
+        @RequestParam("personGenderId") int personGenderId,
+        @RequestParam("personKindId") int personKindId,
+        Model model
+    ) {
+        PersonView personView = PersonView.builder()
+                                    .name(personName)
+                                    .birthDate(personBirthDate)
+                                    .deathDate(personDeathDate)
+                                    .details(personDetails)
+                                    .gender(genderFacade.getOne(personGenderId))
+                                    .kind(kindFacade.getOne(personKindId))
+                                    .events(Collections.emptyList())
+                                    .build();
         personFacade.add(personView);
         return getPersonPage(model);
     }
 
     @RequestMapping(value = "/api/person/delete", method = RequestMethod.POST)
-    public String deletePerson(@RequestParam("id") int id,
-                               Model model) {
+    public String deletePerson(
+        @RequestParam("id") int id,
+        Model model
+    ) {
         try {
             personFacade.delete(id);
         } catch (Exception e) {
@@ -73,21 +78,25 @@ public class PersonController {
     }
 
     @RequestMapping(value = "/api/person/update", method = RequestMethod.GET)
-    public String updatePerson(@RequestParam("id") int id,
-                               Model model) {
+    public String updatePerson(
+        @RequestParam("id") int id,
+        Model model
+    ) {
         model.addAttribute("person", personFacade.getOne(id));
         return "editPerson";
     }
 
     @RequestMapping(value = "/api/person/update", method = RequestMethod.POST)
-    public String saveUpdatePerson(@RequestParam("id") int id,
-                                   @RequestParam("personName") String personName,
-                                   @RequestParam("personBirthDate") @DateTimeFormat(pattern = "dd.MM.yyyy") Date personBirthDate,
-                                   @RequestParam("personDeathDate") @DateTimeFormat(pattern = "dd.MM.yyyy") Date personDeathDate,
-                                   @RequestParam("personDetails") String personDetails,
-                                   @RequestParam("personGenderId") int personGenderId,
-                                   @RequestParam("personKindId") int personKindId,
-                                   Model model) {
+    public String saveUpdatePerson(
+        @RequestParam("id") int id,
+        @RequestParam("personName") String personName,
+        @RequestParam("personBirthDate") @DateTimeFormat(pattern = "dd.MM.yyyy") Date personBirthDate,
+        @RequestParam("personDeathDate") @DateTimeFormat(pattern = "dd.MM.yyyy") Date personDeathDate,
+        @RequestParam("personDetails") String personDetails,
+        @RequestParam("personGenderId") int personGenderId,
+        @RequestParam("personKindId") int personKindId,
+        Model model
+    ) {
         PersonView personView = personFacade.getOne(id);
         personView.setName(personName);
         personView.setBirthDate(personBirthDate);

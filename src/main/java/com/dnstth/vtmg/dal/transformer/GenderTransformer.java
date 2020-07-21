@@ -1,12 +1,12 @@
 package com.dnstth.vtmg.dal.transformer;
 
-import com.dnstth.vtmg.dal.dto.Gender;
-import com.dnstth.vtmg.view.GenderView;
-import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import com.dnstth.vtmg.dal.dto.Gender;
+import com.dnstth.vtmg.view.GenderView;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by Denes_Toth
@@ -16,10 +16,10 @@ public class GenderTransformer implements Transformer<Gender, GenderView> {
 
     @Override
     public Gender viewToDto(GenderView genderView) {
-        Gender gender = new Gender();
-        gender.setId(genderView.getId());
-        gender.setDescription(genderView.getDescription());
-        return gender;
+        return Gender.builder()
+                   .id(genderView.getId())
+                   .description(genderView.getDescription())
+                   .build();
     }
 
     @Override
@@ -29,10 +29,10 @@ public class GenderTransformer implements Transformer<Gender, GenderView> {
 
     @Override
     public GenderView dtoToView(Gender gender) {
-        GenderView genderView = new GenderView();
-        genderView.setId(gender.getId());
-        genderView.setDescription(gender.getDescription());
-        return genderView;
+        return GenderView.builder()
+                   .id(gender.getId())
+                   .description(gender.getDescription())
+                   .build();
     }
 
     @Override

@@ -30,8 +30,7 @@ public class GenderController {
     @RequestMapping(value = "/api/gender", method = RequestMethod.POST)
     public String addNewGender(@RequestParam("genderDescription") String genderDescription,
                                Model model) {
-        GenderView genderView = new GenderView();
-        genderView.setDescription(genderDescription);
+        GenderView genderView = GenderView.builder().description(genderDescription).build();
         genderFacade.add(genderView);
         return getGenderPage(model);
     }

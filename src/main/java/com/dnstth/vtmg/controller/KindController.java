@@ -30,8 +30,7 @@ public class KindController {
     @RequestMapping(value = "/api/kind", method = RequestMethod.POST)
     public String addNewKind(@RequestParam("kindDetails") String kindDetails,
                              Model model) {
-        KindView kindView = new KindView();
-        kindView.setDetails(kindDetails);
+        KindView kindView = KindView.builder().details(kindDetails).build();
         kindFacade.add(kindView);
         return getKindPage(model);
     }

@@ -1,13 +1,13 @@
 package com.dnstth.vtmg.dal.transformer;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.dnstth.vtmg.dal.dto.Person;
 import com.dnstth.vtmg.view.PersonView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created by Denes_Toth
@@ -26,16 +26,16 @@ public class PersonTransformer implements Transformer<Person, PersonView> {
 
     @Override
     public Person viewToDto(PersonView personView) {
-        Person person = new Person();
-        person.setId(personView.getId());
-        person.setName(personView.getName());
-        person.setBirthDate(personView.getBirthDate());
-        person.setDeathDate(personView.getDeathDate());
-        person.setDetails(personView.getDetails());
-        person.setEvents(eventTransformer.viewsToDtos(personView.getEvents()));
-        person.setGender(genderTransformer.viewToDto(personView.getGender()));
-        person.setKind(kindTransformer.viewToDto(personView.getKind()));
-        return person;
+        return Person.builder()
+                   .id(personView.getId())
+                   .name(personView.getName())
+                   .birthDate(personView.getBirthDate())
+                   .deathDate(personView.getDeathDate())
+                   .details(personView.getDetails())
+                   .events(eventTransformer.viewsToDtos(personView.getEvents()))
+                   .gender(genderTransformer.viewToDto(personView.getGender()))
+                   .kind(kindTransformer.viewToDto(personView.getKind()))
+                   .build();
     }
 
     @Override
@@ -45,15 +45,15 @@ public class PersonTransformer implements Transformer<Person, PersonView> {
 
     @Override
     public PersonView dtoToView(Person person) {
-        PersonView personView = new PersonView();
-        personView.setId(person.getId());
-        personView.setName(person.getName());
-        personView.setBirthDate(person.getBirthDate());
-        personView.setDeathDate(person.getDeathDate());
-        personView.setDetails(person.getDetails());
-        personView.setGender(genderTransformer.dtoToView(person.getGender()));
-        personView.setKind(kindTransformer.dtoToView(person.getKind()));
-        return personView;
+        return PersonView.builder()
+                   .id(person.getId())
+                   .name(person.getName())
+                   .birthDate(person.getBirthDate())
+                   .deathDate(person.getDeathDate())
+                   .details(person.getDetails())
+                   .gender(genderTransformer.dtoToView(person.getGender()))
+                   .kind(kindTransformer.dtoToView(person.getKind()))
+                   .build();
     }
 
     @Override

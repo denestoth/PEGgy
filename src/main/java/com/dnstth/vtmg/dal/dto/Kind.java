@@ -1,11 +1,18 @@
 package com.dnstth.vtmg.dal.dto;
 
-import javax.persistence.*;
 import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
-/**
- * Created by Denes_Toth
- */
+import lombok.Builder;
+import lombok.Getter;
+
+@Getter
+@Builder
 @Entity
 public class Kind {
 
@@ -19,28 +26,4 @@ public class Kind {
 
     @OneToMany(mappedBy = "kind")
     private List<Person> people;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getDetails() {
-        return details;
-    }
-
-    public void setDetails(String details) {
-        this.details = details;
-    }
-
-    public List<Person> getPeople() {
-        return people;
-    }
-
-    public void setPeople(List<Person> people) {
-        this.people = people;
-    }
 }

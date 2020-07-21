@@ -1,12 +1,12 @@
 package com.dnstth.vtmg.dal.transformer;
 
-import com.dnstth.vtmg.dal.dto.Kind;
-import com.dnstth.vtmg.view.KindView;
-import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import com.dnstth.vtmg.dal.dto.Kind;
+import com.dnstth.vtmg.view.KindView;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by Denes_Toth
@@ -16,23 +16,23 @@ public class KindTransformer implements Transformer<Kind, KindView> {
 
     @Override
     public Kind viewToDto(KindView kindView) {
-        Kind kind = new Kind();
-        kind.setId(kindView.getId());
-        kind.setDetails(kindView.getDetails());
-        return kind;
+        return Kind.builder()
+                   .id(kindView.getId())
+                   .details(kindView.getDetails())
+                   .build();
     }
 
     @Override
     public List<Kind> viewsToDtos(List<KindView> kindViews) {
-        return kindViews != null ?  kindViews.stream().map(kv -> viewToDto(kv)).collect(Collectors.toList()) : new ArrayList<>();
+        return kindViews != null ? kindViews.stream().map(kv -> viewToDto(kv)).collect(Collectors.toList()) : new ArrayList<>();
     }
 
     @Override
     public KindView dtoToView(Kind kind) {
-        KindView kindView = new KindView();
-        kindView.setId(kind.getId());
-        kindView.setDetails(kind.getDetails());
-        return kindView;
+        return KindView.builder()
+                   .id(kind.getId())
+                   .details(kind.getDetails())
+                   .build();
     }
 
     @Override

@@ -10,9 +10,6 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import java.util.Locale;
 
-/**
- * @author Denes_Toth
- */
 @Configuration
 public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
 

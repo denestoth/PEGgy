@@ -1,13 +1,13 @@
 package com.dnstth.vtmg.dal.transformer;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.dnstth.vtmg.dal.dto.Event;
 import com.dnstth.vtmg.view.EventView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created by Denes_Toth
@@ -23,14 +23,14 @@ public class EventTransformer implements Transformer<Event, EventView> {
 
     @Override
     public Event viewToDto(EventView eventView) {
-        Event event = new Event();
-        event.setId(eventView.getId());
-        event.setDate(eventView.getDate());
-        event.setDescription(eventView.getDescription());
-        event.setDetails(eventView.getDetails());
-        event.setParticipants(personTransformer.viewsToDtos(eventView.getParticipants()));
-        event.setPlace(placeTransformer.viewToDto(eventView.getPlace()));
-        return event;
+        return Event.builder()
+                   .id(eventView.getId())
+                   .date(eventView.getDate())
+                   .description(eventView.getDescription())
+                   .details(eventView.getDetails())
+                   .participants(personTransformer.viewsToDtos(eventView.getParticipants()))
+                   .place(placeTransformer.viewToDto(eventView.getPlace()))
+                   .build();
     }
 
     @Override
@@ -40,14 +40,14 @@ public class EventTransformer implements Transformer<Event, EventView> {
 
     @Override
     public EventView dtoToView(Event event) {
-        EventView eventView = new EventView();
-        eventView.setId(event.getId());
-        eventView.setDate(event.getDate());
-        eventView.setDescription(event.getDescription());
-        eventView.setDetails(event.getDetails());
-        eventView.setParticipants(personTransformer.dtosToViews(event.getParticipants()));
-        eventView.setPlace(placeTransformer.dtoToView(event.getPlace()));
-        return eventView;
+        return EventView.builder()
+                   .id(event.getId())
+                   .date(event.getDate())
+                   .description(event.getDescription())
+                   .details(event.getDetails())
+                   .participants(personTransformer.dtosToViews(event.getParticipants()))
+                   .place(placeTransformer.dtoToView(event.getPlace()))
+                   .build();
     }
 
     @Override

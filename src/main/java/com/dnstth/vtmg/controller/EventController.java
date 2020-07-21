@@ -1,5 +1,9 @@
 package com.dnstth.vtmg.controller;
 
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.dnstth.vtmg.dal.facade.EventFacade;
 import com.dnstth.vtmg.dal.facade.PersonFacade;
 import com.dnstth.vtmg.dal.facade.PlaceFacade;
@@ -14,10 +18,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created by Denes_Toth
@@ -42,25 +42,31 @@ public class EventController {
     }
 
     @RequestMapping(value = "/api/event", method = RequestMethod.POST)
-    public String addNewEvent(@RequestParam("eventDescription") String eventDescription,
-                              @RequestParam("eventDate") @DateTimeFormat(pattern = "dd.MM.yyyy HH:mm") Date eventDate,
-                              @RequestParam("eventDetails") String eventDetails,
-                              @RequestParam("placeViewId") Integer placeViewID,
-                              @RequestParam("participandViewIds") List<Integer> participantViewIds,
-                              Model model) {
-        EventView eventView = new EventView();
-        eventView.setDescription(eventDescription);
-        eventView.setDate(eventDate);
-        eventView.setDetails(eventDetails);
-        eventView.setPlace(placeFacade.getOne(placeViewID));
-        eventView.setParticipants(personFacade.getAll().stream().filter(personView -> participantViewIds.contains(personView.getId())).collect(Collectors.toList()));
+    public String addNewEvent(
+        @RequestParam("eventDescription") String eventDescription,
+        @RequestParam("eventDate") @DateTimeFormat(pattern = "dd.MM.yyyy HH:mm") Date eventDate,
+        @RequestParam("eventDetails") String eventDetails,
+        @RequestParam("placeViewId") Integer placeViewID,
+        @RequestParam("participandViewIds") List<Integer> participantViewIds,
+        Model model
+    ) {
+        EventView eventView = EventView.builder()
+                                  .description(eventDescription)
+                                  .date(eventDate)
+                                  .details(eventDetails)
+                                  .place(placeFacade.getOne(placeViewID))
+                                  .participants(getParticipants(participantViewIds))
+                                  .build();
+
         eventFacade.add(eventView);
         return getEventPage(model);
     }
 
     @RequestMapping(value = "/api/event/delete", method = RequestMethod.POST)
-    public String deleteEvent(@RequestParam("id") int id,
-                              Model model) {
+    public String deleteEvent(
+        @RequestParam("id") int id,
+        Model model
+    ) {
         eventFacade.delete(id);
         return getEventPage(model);
     }
@@ -72,19 +78,21 @@ public class EventController {
     }
 
     @RequestMapping(value = "/api/event/update", method = RequestMethod.POST)
-    public String saveUpdateEvent(@RequestParam("id") int id,
-                                  @RequestParam("eventDescription") String eventDescription,
-                                  @RequestParam("eventDate") @DateTimeFormat(pattern = "dd.MM.yyyy HH:mm") Date eventDate,
-                                  @RequestParam("eventDetails") String eventDetails,
-                                  @RequestParam("placeViewId") Integer placeViewID,
-                                  @RequestParam("participantViewIds") List<Integer> participantViewIds,
-                                  Model model) {
+    public String saveUpdateEvent(
+        @RequestParam("id") int id,
+        @RequestParam("eventDescription") String eventDescription,
+        @RequestParam("eventDate") @DateTimeFormat(pattern = "dd.MM.yyyy HH:mm") Date eventDate,
+        @RequestParam("eventDetails") String eventDetails,
+        @RequestParam("placeViewId") Integer placeViewID,
+        @RequestParam("participantViewIds") List<Integer> participantViewIds,
+        Model model
+    ) {
         EventView eventView = eventFacade.getOne(id);
         eventView.setDescription(eventDescription);
         eventView.setDate(eventDate);
         eventView.setDetails(eventDetails);
         eventView.setPlace(placeFacade.getOne(placeViewID));
-        eventView.setParticipants(personFacade.getAll().stream().filter(personView -> participantViewIds.contains(personView.getId())).collect(Collectors.toList()));
+        eventView.setParticipants(getParticipants(participantViewIds));
         eventFacade.update(eventView);
         return getEventPage(model);
     }
@@ -101,5 +109,12 @@ public class EventController {
         List<PersonView> personViews = personFacade.getAll();
         personViews.sort((person1, person2) -> person1.getName().compareTo(person2.getName()));
         return personViews;
+    }
+
+    private List<PersonView> getParticipants(@RequestParam("participandViewIds") List<Integer> participantViewIds) {
+        return personFacade.getAll()
+                   .stream()
+                   .filter(personView -> participantViewIds.contains(personView.getId()))
+                   .collect(Collectors.toList());
     }
 }

@@ -1,27 +1,12 @@
 package com.dnstth.vtmg.view;
 
-/**
- * @author Denes_Toth
- */
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+
 public abstract class LightweightView {
 
     private int id;
 
     private String displayText;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getDisplayText() {
-        return displayText;
-    }
-
-    public void setDisplayText(String displayText) {
-        this.displayText = displayText;
-    }
 }

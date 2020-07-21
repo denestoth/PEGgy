@@ -1,12 +1,12 @@
 package com.dnstth.vtmg.dal.transformer;
 
-import com.dnstth.vtmg.dal.dto.Place;
-import com.dnstth.vtmg.view.PlaceView;
-import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import com.dnstth.vtmg.dal.dto.Place;
+import com.dnstth.vtmg.view.PlaceView;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by Denes_Toth
@@ -16,11 +16,11 @@ public class PlaceTransformer implements Transformer<Place, PlaceView> {
 
     @Override
     public Place viewToDto(PlaceView placeView) {
-        Place place = new Place();
-        place.setId(placeView.getId());
-        place.setName(placeView.getName());
-        place.setDetails(placeView.getDetails());
-        return place;
+        return Place.builder()
+                   .id(placeView.getId())
+                   .name(placeView.getName())
+                   .details(placeView.getDetails())
+                   .build();
     }
 
     @Override
@@ -30,11 +30,11 @@ public class PlaceTransformer implements Transformer<Place, PlaceView> {
 
     @Override
     public PlaceView dtoToView(Place place) {
-        PlaceView placeView = new PlaceView();
-        placeView.setId(place.getId());
-        placeView.setName(place.getName());
-        placeView.setDetails(place.getDetails());
-        return placeView;
+        return PlaceView.builder()
+                   .id(place.getId())
+                   .name(place.getName())
+                   .details(place.getDetails())
+                   .build();
     }
 
     @Override
